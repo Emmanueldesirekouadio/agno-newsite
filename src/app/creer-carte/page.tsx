@@ -18,7 +18,7 @@ export default function CreerCartePage() {
           </p>
           <Link
             href="#start"
-            className="bg-white text-agno px-8 py-4 rounded-full font-semibold hover:bg-agno/10 transition-colors inline-block"
+            className="bg-white text-agno px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-colors inline-block"
           >
             Commencer maintenant
           </Link>
@@ -427,7 +427,7 @@ export default function CreerCartePage() {
           </p>
           <Link
             href="/inscription"
-            className="bg-white text-agno agno-button hover:bg-agno/10 transition-colors"
+            className="bg-white text-agno px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-colors"
           >
             Créer votre carte gratuitement
           </Link>

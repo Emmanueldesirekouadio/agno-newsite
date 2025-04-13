@@ -3,21 +3,28 @@
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    return pathname === path ? "text-agno" : "text-gray-800";
+  };
 
   return (
     <header className="w-full bg-white py-4 border-b sticky top-0 z-50">
       <div className="agno-container flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <div className="relative h-12 w-12 mr-2">
+          <div className="relative h-24 w-24 mr-2">
             <Image
               src="/logoagno.png"
               alt="Agno Logo"
-              fill
+              width={120}
+              height={48}
               className="object-contain"
               priority
             />
@@ -26,38 +33,29 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/" className="text-gray-800 hover:text-agno font-medium">
+          <Link href="/" className={`${isActive("/")} font-medium`}>
             Accueil
           </Link>
           <Link
             href="/fonctionnalites"
-            className="text-gray-800 hover:text-agno font-medium"
+            className={`${isActive("/fonctionnalites")} font-medium`}
           >
             Fonctionnalités
           </Link>
           <Link
-            href="/espace-client"
-            className="text-gray-800 hover:text-agno font-medium"
+            href="/connexion"
+            className={`${isActive("/connexion")} font-medium`}
           >
             Espace Client
           </Link>
-          <Link
-            href="/tarifs"
-            className="text-gray-800 hover:text-agno font-medium"
-          >
+          <Link href="/tarifs" className={`${isActive("/tarifs")} font-medium`}>
             Tarifs
           </Link>
           <Link
             href="/contact"
-            className="text-gray-800 hover:text-agno font-medium"
+            className={`${isActive("/contact")} font-medium`}
           >
-            Contact
-          </Link>
-          <Link
-            href="/blog"
-            className="text-gray-800 hover:text-agno font-medium"
-          >
-            Blog
+            Contact & support
           </Link>
         </nav>
 
@@ -94,46 +92,40 @@ export default function Header() {
           <div className="p-4 flex flex-col space-y-4">
             <Link
               href="/"
-              className="text-gray-800 hover:text-agno py-2 font-medium"
+              className={`${isActive("/")} py-2 font-medium`}
               onClick={() => setIsMenuOpen(false)}
             >
               Accueil
             </Link>
             <Link
               href="/fonctionnalites"
-              className="text-gray-800 hover:text-agno py-2 font-medium"
+              className={`${isActive("/fonctionnalites")} py-2 font-medium`}
               onClick={() => setIsMenuOpen(false)}
             >
               Fonctionnalités
             </Link>
             <Link
-              href="/espace-client"
-              className="text-gray-800 hover:text-agno py-2 font-medium"
+              href="/connexion"
+              className={`${isActive("/connexion")} py-2 font-medium`}
               onClick={() => setIsMenuOpen(false)}
             >
               Espace Client
             </Link>
             <Link
               href="/tarifs"
-              className="text-gray-800 hover:text-agno py-2 font-medium"
+              className={`${isActive("/tarifs")} py-2 font-medium`}
               onClick={() => setIsMenuOpen(false)}
             >
               Tarifs
             </Link>
             <Link
               href="/contact"
-              className="text-gray-800 hover:text-agno py-2 font-medium"
+              className={`${isActive("/contact")} py-2 font-medium`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              Contact & support
             </Link>
-            <Link
-              href="/blog"
-              className="text-gray-800 hover:text-agno py-2 font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Blog
-            </Link>
+
             <div className="pt-4 flex flex-col space-y-3">
               <Link
                 href="/connexion"

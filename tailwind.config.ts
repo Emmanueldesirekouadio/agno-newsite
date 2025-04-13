@@ -78,6 +78,12 @@ export default {
           "2xl": "1536px",
         },
       },
+      backgroundImage: {
+        "grid-pattern":
+          "repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 20px)",
+        "grid-pattern-light":
+          "repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 20px)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

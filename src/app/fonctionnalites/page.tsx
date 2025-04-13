@@ -3,130 +3,199 @@ import Link from "next/link";
 
 export default function FonctionnalitesPage() {
   return (
-    <div className="flex flex-col">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-agno to-agno-dark text-white py-16 md:py-24">
-        <div className="agno-container text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Fonctionnalités Clés
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto">
-            Agno propose une gamme de fonctionnalités conçues pour répondre à
-            vos besoins professionnels
-          </p>
+      <section className="bg-[#FFFCEE] py-6 md:py-10 px-4 md:px-10 lg:px-20 relative">
+        <div className="max-w-7xl mx-auto mb-12 md:mb-16">
+          <div className="flex flex-row items-start justify-between gap-4 md:gap-10">
+            {/* Left Content */}
+            <div className="w-[45%] md:w-1/2 space-y-3 md:space-y-6 pt-2">
+              <h1 className="inline-block bg-[#F18701] text-white px-3 md:px-6 py-1.5 md:py-2 rounded-lg text-lg md:text-2xl lg:text-3xl">
+                Fonctionnalités AGNO
+              </h1>
+
+              <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-gray-800 mt-2 md:mt-4 leading-tight">
+                Explorez les outils qui simplifient votre communication.
+              </h2>
+
+              <div className="flex flex-col gap-2 md:gap-4 py-2 md:py-4">
+                <div className="feature-item flex items-center space-x-2">
+                  <svg
+                    className="check-icon w-4 md:w-5 h-4 md:h-5 text-[#F18701] flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm md:text-base">
+                    Création personnalisée
+                  </span>
+                </div>
+
+                <div className="feature-item flex items-center space-x-2">
+                  <svg
+                    className="check-icon w-4 md:w-5 h-4 md:h-5 text-[#F18701] flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm md:text-base">Partage facile</span>
+                </div>
+
+                <div className="feature-item flex items-center space-x-2">
+                  <svg
+                    className="check-icon w-4 md:w-5 h-4 md:h-5 text-[#F18701] flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm md:text-base">
+                    Mises à jour instantanées
+                  </span>
+                </div>
+              </div>
+
+              <button className="bg-[#F18701] text-white px-3 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-3 rounded-lg hover:bg-[#F18701]/90 transition-colors text-xs sm:text-sm md:text-base whitespace-nowrap">
+                Commencer maintenant
+              </button>
+            </div>
+
+            {/* Right Content - Phone and Card Image */}
+            <div className="w-[55%] md:w-1/2 relative h-[250px] md:h-[500px] flex items-center">
+              <div className="relative h-full w-full pt-8 md:pt-16">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Image
+                    src="/phone-screens/tel&card.png"
+                    alt="Phone&card"
+                    width={600}
+                    height={600}
+                    className="object-contain w-full h-full transform scale-110 md:scale-125 translate-y-0 md:translate-y-8"
+                    priority
+                  />
+                </div>
+
+                {/* Background Decorative Elements */}
+                <div className="absolute top-12 md:top-24 right-0 w-24 md:w-64 h-24 md:h-64 rounded-full bg-[#FFD580] opacity-40 z-0"></div>
+                <div className="absolute bottom-8 md:bottom-20 right-4 md:right-10 w-12 md:w-32 h-12 md:h-32 rounded-full bg-[#FFD580] opacity-40 z-0"></div>
+                <div className="absolute top-16 md:top-40 right-16 md:right-40 w-8 md:w-24 h-8 md:h-24 rounded-full bg-[#FFD580] opacity-30 z-0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Sponsors Banner */}
+        <div className="absolute -bottom-6 left-0 right-0 w-full">
+          <div className="w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-agno/95 backdrop-blur-sm py-2 md:py-2.5 overflow-hidden">
+            <div className="absolute left-0 h-[calc(100%+1.25rem)] -top-2.5 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-white/80 via-white/40 to-transparent z-10"></div>
+            <div className="absolute right-0 h-[calc(100%+1.25rem)] -top-2.5 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-white/80 via-white/40 to-transparent z-10"></div>
+            <div className="max-w-[2400px] mx-auto relative overflow-hidden">
+              <div className="relative w-[200%] flex animate-scroll">
+                <div className="flex w-1/2 justify-around items-center px-8 md:px-16 lg:px-24">
+                  <Image
+                    src="/logos/harvard.png"
+                    alt="Harvard Business Review"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                  <Image
+                    src="/logos/logocie.png"
+                    alt="CIE"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                </div>
+                <div className="flex w-1/2 justify-around items-center px-8 md:px-16 lg:px-24">
+                  <Image
+                    src="/logos/harvard.png"
+                    alt="Harvard Business Review"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                  <Image
+                    src="/logos/logocie.png"
+                    alt="CIE"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Features Tabs Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="agno-container">
-          <div className="flex flex-wrap justify-center mb-12">
-            <button className="m-2 px-6 py-3 bg-agno/10 text-agno font-semibold rounded-full">
-              Création Personnalisée
-            </button>
-            <button className="m-2 px-6 py-3 text-gray-500 hover:bg-agno/10 hover:text-agno font-semibold rounded-full transition-colors">
-              Partage Facile
-            </button>
-            <button className="m-2 px-6 py-3 text-gray-500 hover:bg-agno/10 hover:text-agno font-semibold rounded-full transition-colors">
-              Mises à Jour Instantanées
-            </button>
-            <button className="m-2 px-6 py-3 text-gray-500 hover:bg-agno/10 hover:text-agno font-semibold rounded-full transition-colors">
-              Statistiques d'Utilisation
-            </button>
+      <section className="py-16 md:py-24 bg-white w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Création de Carte Section */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-24">
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+              <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]">
+                <Image
+                  src="/phone-screens/mockup.png"
+                  alt="Création de carte"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="w-full lg:w-1/2 space-y-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                Création de Carte Personnalisée
+              </h2>
+              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                Avec Agno, créez des cartes de visite uniques qui reflètent
+                votre identité professionnelle. Choisissez parmi une variété de
+                modèles, couleurs et polices pour personnaliser votre carte
+                selon vos préférences.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white rounded-3xl overflow-hidden shadow-xl mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <h3 className="text-2xl lg:text-3xl font-bold mb-6">
-                  Création Personnalisée
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Concevez votre carte avec des modèles variés, des options de
-                  couleurs, et des polices adaptées à votre image de marque.
-                </p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start">
-                    <div className="bg-agno/10 p-1 rounded-full mr-3 mt-1">
-                      <svg
-                        className="h-4 w-4 text-agno"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <strong className="font-semibold">
-                        Modèles Variés :
-                      </strong>{" "}
-                      Choisissez parmi une vaste bibliothèque de modèles
-                      professionnels.
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-agno/10 p-1 rounded-full mr-3 mt-1">
-                      <svg
-                        className="h-4 w-4 text-agno"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <strong className="font-semibold">
-                        Personnalisation Complète :
-                      </strong>{" "}
-                      Adaptez les couleurs, polices et mise en page à votre
-                      marque.
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-agno/10 p-1 rounded-full mr-3 mt-1">
-                      <svg
-                        className="h-4 w-4 text-agno"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <strong className="font-semibold">
-                        Importation Facile :
-                      </strong>{" "}
-                      Intégrez vos propres images et logo pour un design unique.
-                    </div>
-                  </li>
-                </ul>
-                <Link
-                  href="/creer-carte"
-                  className="bg-agno text-white px-8 py-3 rounded-full font-semibold hover:bg-agno-dark transition-colors inline-block self-start"
-                >
-                  Créer votre carte de visite
-                </Link>
-              </div>
-              <div className="bg-agno-dark p-8 lg:p-0 flex items-center justify-center relative">
-                <div className="relative h-[400px] w-full">
+          {/* Partagez en Un Clic Section */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div className="w-full lg:w-1/2 space-y-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                Partagez en Un Clic
+              </h2>
+              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                Partagez vos informations de contact instantanément avec un QR
+                Code ou un lien personnalisé. Vos contacts peuvent accéder à
+                votre carte digitale sur leur smartphone, facilitant ainsi le
+                networking.
+              </p>
+            </div>
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+              <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]">
+                <Image
+                  src="/phone-screens/tel01.png"
+                  alt="Partage QR code"
+                  fill
+                  className="object-contain"
+                />
+                <div className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 xl:w-32 xl:h-32">
                   <Image
-                    src="/business-cards.png"
-                    alt="Cartes de visite Agno"
+                    src="/phone-screens/Qr.png"
+                    alt="QR Code"
                     fill
                     className="object-contain"
                   />
@@ -137,215 +206,151 @@ export default function FonctionnalitesPage() {
         </div>
       </section>
 
-      {/* Feature Grid Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="agno-container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
-            Toutes nos fonctionnalités
-          </h2>
+      {/* Suivi des Performances Section */}
+      <section className="py-16 md:py-24 bg-[#FFFCEE] w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Suivi des Performances
+            </h2>
+            <p className="text-gray-600 text-base md:text-lg">
+              Accédez à des statistiques détaillées sur l'interaction avec vos
+              cartes. Découvrez combien de fois vos cartes ont été consultées et
+              optimisez votre approche de networking en fonction des données
+              recueillies.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+            {/* Cartes */}
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-4">
                 <svg
-                  className="h-6 w-6 text-agno"
+                  className="w-6 h-6 text-agno"
                   fill="currentColor"
                   viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Éditeur Intuitif</h3>
-              <p className="text-gray-600">
-                Interface simple et puissante pour créer vos cartes sans
-                expertise en design.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
-                <svg
-                  className="h-6 w-6 text-agno"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                   <path
                     fillRule="evenodd"
-                    d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
                     clipRule="evenodd"
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Galerie de Modèles</h3>
-              <p className="text-gray-600">
-                Accédez à une vaste collection de modèles professionnels pour
-                tous les secteurs.
-              </p>
+              <div className="text-2xl font-bold text-gray-900 mb-1">10</div>
+              <div className="text-sm text-gray-600">Cartes</div>
             </div>
 
-            {/* Feature 3 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
+            {/* Connaissances */}
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-4">
                 <svg
-                  className="h-6 w-6 text-agno"
+                  className="w-6 h-6 text-agno"
                   fill="currentColor"
                   viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                </svg>
+              </div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">24</div>
+              <div className="text-sm text-gray-600">Connaissances</div>
+            </div>
+
+            {/* Produits */}
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-agno"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
                   <path
                     fillRule="evenodd"
-                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
                     clipRule="evenodd"
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">
-                Personnalisation Avancée
-              </h3>
-              <p className="text-gray-600">
-                Ajustez chaque détail pour créer des cartes qui reflètent
-                parfaitement votre marque.
-              </p>
+              <div className="text-2xl font-bold text-gray-900 mb-1">45</div>
+              <div className="text-sm text-gray-600">Produits</div>
             </div>
 
-            {/* Feature 4 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
+            {/* Services */}
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-4">
                 <svg
-                  className="h-6 w-6 text-agno"
+                  className="w-6 h-6 text-agno"
                   fill="currentColor"
                   viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     fillRule="evenodd"
-                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                    d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
                     clipRule="evenodd"
                   />
+                  <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">
-                Mises à Jour Instantanées
-              </h3>
-              <p className="text-gray-600">
-                Actualisez vos informations en temps réel sur toutes vos cartes
-                partagées.
-              </p>
+              <div className="text-2xl font-bold text-gray-900 mb-1">34</div>
+              <div className="text-sm text-gray-600">Services</div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Feature 5 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
-                <svg
-                  className="h-6 w-6 text-agno"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+      {/* Personnalisation Avancée Section */}
+      <section className="py-16 md:py-24 bg-[#FFFCEE] w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl overflow-hidden">
+            <div className="flex flex-col lg:flex-row">
+              {/* Left Content */}
+              <div className="w-full lg:w-1/2 p-8 md:p-12">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                  Personnalisation Avancée
+                </h2>
+                <p className="text-gray-600 text-base md:text-lg mb-8">
+                  Allez au-delà des designs standard ! Agno vous permet
+                  d'ajouter des éléments interactifs tels que des liens vers vos
+                  réseaux sociaux, votre site web ou même des vidéos de
+                  présentation.
+                </p>
+                <Link
+                  href="/creer-carte"
+                  className="bg-agno text-white px-8 py-3 rounded-lg font-medium hover:bg-agno/90 transition-colors inline-block"
                 >
-                  <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                </svg>
+                  Créer votre carte de visite
+                </Link>
               </div>
-              <h3 className="text-xl font-bold mb-2">Partage Multicanal</h3>
-              <p className="text-gray-600">
-                Partagez vos cartes via QR code, email, SMS ou réseaux sociaux
-                en un clic.
-              </p>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
-                <svg
-                  className="h-6 w-6 text-agno"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
+              {/* Right Content with Yellow Background */}
+              <div className="w-full lg:w-1/2 bg-[#FFD246] p-8 md:p-12 relative flex items-center justify-center">
+                <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px]">
+                  <Image
+                    src="/Business.png"
+                    alt="Card Mockup"
+                    fill
+                    className="object-contain transform rotate-[-15deg]"
                   />
-                </svg>
+                  {/* QR Code */}
+                  <div className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32">
+                    <Image
+                      src="/phone-screens/Qr.png"
+                      alt="QR Code"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-2">Analytiques Détaillées</h3>
-              <p className="text-gray-600">
-                Suivez qui consulte vos cartes et optimisez votre stratégie de
-                networking.
-              </p>
-            </div>
-
-            {/* Feature 7 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
-                <svg
-                  className="h-6 w-6 text-agno"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Gestion des Contacts</h3>
-              <p className="text-gray-600">
-                Organisez vos relations professionnelles et importez facilement
-                vos contacts.
-              </p>
-            </div>
-
-            {/* Feature 8 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
-                <svg
-                  className="h-6 w-6 text-agno"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Sécurité Avancée</h3>
-              <p className="text-gray-600">
-                Protection de vos données et contrôle des accès à vos
-                informations.
-              </p>
-            </div>
-
-            {/* Feature 9 */}
-            <div className="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="bg-agno/10 p-4 rounded-xl inline-block mb-4">
-                <svg
-                  className="h-6 w-6 text-agno"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Intégrations</h3>
-              <p className="text-gray-600">
-                Connectez Agno à vos outils favoris comme LinkedIn, Gmail, et
-                bien plus.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-agno py-16 text-white">
-        <div className="agno-container text-center">
+      <section className="bg-agno py-16 text-white w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Prêt à essayer nos fonctionnalités?
           </h2>
@@ -356,13 +361,13 @@ export default function FonctionnalitesPage() {
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link
               href="/creer-carte"
-              className="bg-white text-agno agno-button hover:bg-agno-dark transition-colors"
+              className="bg-white text-agno px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-colors"
             >
               Créer votre carte gratuitement
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-white text-white agno-button hover:bg-white/10 transition-colors"
+              className="border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/20 transition-colors"
             >
               Nous contacter
             </Link>

@@ -255,7 +255,7 @@ export default function InscriptionPage() {
           </p>
           <Link
             href="/inscription"
-            className="bg-white text-agno agno-button hover:bg-agno/10 transition-colors"
+            className="bg-white text-agno agno-button hover:bg-gray-100 hover:text-agno-dark transition-colors"
           >
             Créer votre carte gratuitement
           </Link>

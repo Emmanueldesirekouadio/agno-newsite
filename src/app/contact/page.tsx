@@ -1,17 +1,30 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [openQuestions, setOpenQuestions] = useState<number[]>([]);
+
+  const toggleQuestion = (index: number) => {
+    setOpenQuestions((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-agno to-agno-dark text-white py-16 md:py-24">
-        <div className="agno-container text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Contactez-nous
+      <section className="bg-gradient-to-br from-white via-[#fff5eb] to-[#ffe4cc] py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            <span className="text-[#f7931e]">Comment pouvons nous</span>
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto">
-            Notre équipe est là pour répondre à toutes vos questions
-          </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4">
+            <span className="bg-[#f7931e] text-white px-8 py-2 rounded-full">
+              vous aider?
+            </span>
+          </h2>
         </div>
       </section>
 
@@ -136,21 +149,6 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Sujet
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
-                    placeholder="Comment pouvons-nous vous aider ?"
-                  />
-                </div>
-                <div>
-                  <label
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
@@ -166,7 +164,7 @@ export default function ContactPage() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-agno text-white py-3 px-6 rounded-lg font-semibold hover:bg-agno-dark transition-colors"
+                  className="w-full bg-agno text-white py-3 px-6 rounded-lg font-semibold hover:bg-white hover:text-agno-dark transition-colors"
                 >
                   Envoyer le message
                 </button>
@@ -177,22 +175,124 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="agno-container">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Questions fréquentes
-          </h2>
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-xl font-semibold mb-4 text-agno">
-                Quel est le délai de réponse ?
-              </h3>
-              <p className="text-gray-600">
-                Nous nous efforçons de répondre à toutes les demandes dans un
-                délai de 24 heures ouvrées.
-              </p>
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Questions Fréquemment Posées
+            </h2>
+            <p className="text-gray-600">
+              Trouvez rapidement des réponses à vos questions
+            </p>
+          </div>
+
+          <div className="faq-section">
+            {/* Question 1 */}
+            <div className="faq-item" data-open={openQuestions.includes(0)}>
+              <button className="faq-button" onClick={() => toggleQuestion(0)}>
+                <h3 className="faq-question">
+                  Comment puis-je modifier mes informations sur ma carte ?
+                </h3>
+                <svg
+                  className="faq-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="faq-answer">
+                Connectez-vous à votre compte Agno, accédez à la section "Mes
+                cartes" et cliquez sur "Modifier". Vous pourrez alors mettre à
+                jour toutes vos informations en temps réel.
+              </div>
             </div>
-            {/* Add more FAQ items */}
+
+            {/* Question 2 */}
+            <div className="faq-item" data-open={openQuestions.includes(1)}>
+              <button className="faq-button" onClick={() => toggleQuestion(1)}>
+                <h3 className="faq-question">
+                  Combien de temps prend la livraison de ma carte ?
+                </h3>
+                <svg
+                  className="faq-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="faq-answer">
+                La livraison standard prend entre 3 à 5 jours ouvrés. Pour les
+                commandes urgentes, nous proposons une option de livraison
+                express sous 24-48h.
+              </div>
+            </div>
+
+            {/* Question 3 */}
+            <div className="faq-item" data-open={openQuestions.includes(2)}>
+              <button className="faq-button" onClick={() => toggleQuestion(2)}>
+                <h3 className="faq-question">
+                  Puis-je commander des cartes en gros ?
+                </h3>
+                <svg
+                  className="faq-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="faq-answer">
+                Oui, nous proposons des tarifs dégressifs pour les commandes en
+                volume. Contactez notre service commercial pour obtenir un devis
+                personnalisé.
+              </div>
+            </div>
+
+            {/* Question 4 */}
+            <div className="faq-item" data-open={openQuestions.includes(3)}>
+              <button className="faq-button" onClick={() => toggleQuestion(3)}>
+                <h3 className="faq-question">
+                  Y a-t-il des frais cachés avec Agno ?
+                </h3>
+                <svg
+                  className="faq-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="faq-answer">
+                Non, tous nos prix sont transparents et incluent la TVA. Il n'y
+                a aucun frais caché ni abonnement obligatoire.
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -209,7 +309,7 @@ export default function ContactPage() {
           </p>
           <Link
             href="/inscription"
-            className="bg-white text-agno agno-button hover:bg-agno/10 transition-colors"
+            className="bg-white text-agno px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-colors"
           >
             Créer votre carte gratuitement
           </Link>

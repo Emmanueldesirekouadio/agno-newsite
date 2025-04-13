@@ -1,5 +1,26 @@
+import DigitalCard from "@/components/DigitalCard";
+import { HoverEffect } from "@/components/ui/hover-effect";
+import { FileText, GraduationCap, QrCode } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+export const projects = [
+  {
+    icon: "creation" as const,
+    description:
+      "Créez vos cartes de visite en quelques clics grâce à notre interface simple et intuitive.",
+  },
+  {
+    icon: "qrcode" as const,
+    description:
+      "Partagez vos informations professionnelles en un instant avec un QR Code ou un lien personnalisé.",
+  },
+  {
+    icon: "stats" as const,
+    description:
+      "Suivez l'interaction avec vos cartes et optimisez votre réseau grâce à nos statistiques détaillées.",
+  },
+] as const;
 
 export default function HomePage() {
   return (
@@ -24,7 +45,7 @@ export default function HomePage() {
             />
           </div>
           {/* Enhanced Agno Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-agno from-30% via-agno/60 via-40% to-transparent to-75%" />
+          <div className="absolute inset-0 bg-gradient-to-r from-agno from-20% via-agno/60 via-35% to-transparent to-70%" />
         </div>
 
         {/* Content */}
@@ -47,7 +68,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <Link
                   href="/creer-carte"
-                  className="bg-white text-agno-600 px-8 py-3 rounded-full font-medium flex items-center justify-center hover:bg-gray-100 transition-colors"
+                  className="bg-white text-agno-600 px-8 py-3 rounded-full font-medium flex items-center justify-center hover:bg-gray-100 hover:text-agno-700 transition-colors"
                 >
                   Commencer{" "}
                   <svg
@@ -84,113 +105,48 @@ export default function HomePage() {
               </div>
             </div>
             <div className="w-full md:w-1/2 relative">
-              <div className="relative h-[400px] w-full">
-                {/* <Image
-                  src="/phone-screens/"
-                  alt="Agno mobile app screenshot"
-                  width={400}
-                  height={800}
-                  style={{ objectFit: "contain" }}
-                  priority
-                /> */}
-              </div>
-
-              {/* <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
-                        clipRule="evenodd"
-                      />
-                    </svg> */}
-
-              {/* <div className="text-lg font-bold">
-                    10 <span className="text-sm font-normal">Cartes</span>
-                  </div> */}
-
-              {/* <div className="text-agno-200 mr-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-                    </svg>
-                  </div>
-                  <div className="text-lg font-bold">
-                    2 <span className="text-sm font-normal">Connaissances</span>
-                  </div> */}
+              <div className="relative h-[400px] w-full">{/*todo  */}</div>
             </div>
           </div>
 
           {/* Sponsors Banner */}
-          <div className="absolute bottom-0 left-0 right-0 bg-agno/80 py-2.5 overflow-hidden">
-            <div className="flex animate-scroll space-x-16 whitespace-nowrap">
-              <div className="flex space-x-16 items-center pl-8">
-                <Image
-                  src="/logos/huffpost.png"
-                  alt="HuffPost"
-                  width={90}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
-                <Image
-                  src="/logos/bloomberg.png"
-                  alt="Bloomberg"
-                  width={90}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
-                <Image
-                  src="/logos/techcrunch.png"
-                  alt="TechCrunch"
-                  width={45}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
-                <Image
-                  src="/logos/harvard.png"
-                  alt="Harvard Business Review"
-                  width={90}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
-              </div>
-              {/* Duplicate for seamless loop */}
-              <div className="flex space-x-16 items-center">
-                <Image
-                  src="/logos/huffpost.png"
-                  alt="HuffPost"
-                  width={90}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
-                <Image
-                  src="/logos/bloomberg.png"
-                  alt="Bloomberg"
-                  width={90}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
-                <Image
-                  src="/logos/techcrunch.png"
-                  alt="TechCrunch"
-                  width={45}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
-                <Image
-                  src="/logos/harvard.png"
-                  alt="Harvard Business Review"
-                  width={90}
-                  height={30}
-                  className="object-contain opacity-90"
-                />
+          <div className="absolute bottom-0 left-0 right-0 w-full bg-agno/95 backdrop-blur-sm py-2.5 overflow-hidden">
+            <div className="absolute left-0 h-[calc(100%+1.25rem)] -top-2.5 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-white/80 via-white/40 to-transparent z-10"></div>
+            <div className="absolute right-0 h-[calc(100%+1.25rem)] -top-2.5 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-white/80 via-white/40 to-transparent z-10"></div>
+            <div className="max-w-[2400px] mx-auto relative overflow-hidden">
+              <div className="relative w-[200%] flex animate-scroll">
+                <div className="flex w-1/2 justify-around items-center px-8 md:px-16 lg:px-24">
+                  <Image
+                    src="/logos/harvard.png"
+                    alt="Harvard Business Review"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                  <Image
+                    src="/logos/logocie.png"
+                    alt="CIE"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                </div>
+                <div className="flex w-1/2 justify-around items-center px-8 md:px-16 lg:px-24">
+                  <Image
+                    src="/logos/harvard.png"
+                    alt="Harvard Business Review"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                  <Image
+                    src="/logos/logocie.png"
+                    alt="CIE"
+                    width={60}
+                    height={20}
+                    className="object-contain opacity-90 w-[60px] sm:w-[75px] md:w-[90px] h-auto"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -206,51 +162,12 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-
-        <div className="bg-agno py-6">
-          <div className="agno-container flex flex-wrap justify-center md:justify-between items-center gap-8">
-            <p className="text-white text-center md:text-left">
-              Lorem ipsum dolor sit amet consectetur. Hendrerit a morbi
-              adipiscing lacus
-            </p>
-            <div className="flex flex-wrap justify-center gap-8">
-              <Image
-                src="/logos/huffpost.png"
-                alt="HuffPost Logo"
-                width={120}
-                height={40}
-                className="object-contain brightness-0 invert"
-              />
-              <Image
-                src="/logos/bloomberg.png"
-                alt="Bloomberg Logo"
-                width={120}
-                height={40}
-                className="object-contain brightness-0 invert"
-              />
-              <Image
-                src="/logos/techcrunch.png"
-                alt="TechCrunch Logo"
-                width={60}
-                height={40}
-                className="object-contain brightness-0 invert"
-              />
-              <Image
-                src="/logos/harvard.png"
-                alt="Harvard Business Review Logo"
-                width={120}
-                height={40}
-                className="object-contain brightness-0 invert"
-              />
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Rest of the sections remain unchanged */}
 
       {/* "Découvrez Agno" Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-[#fafafa]">
         <div className="agno-container text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Découvrez Agno : Votre Partenaire en Networking
@@ -262,79 +179,276 @@ export default function HomePage() {
         </div>
 
         <div className="agno-container flex flex-col lg:flex-row gap-8">
-          {/* First Feature Block */}
-          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex-1">
-            <div className="bg-gray-100 w-16 h-16 flex items-center justify-center rounded-full mb-6">
-              <svg
-                className="h-8 w-8 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold mb-3">Création Facile</h3>
-            <p className="text-gray-600 mb-4">
-              Créez vos cartes de visite en quelques clics grâce à notre
-              interface simple et intuitive.
-            </p>
-          </div>
-
-          {/* Second Feature Block */}
-          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex-1">
-            <div className="bg-gray-100 w-16 h-16 flex items-center justify-center rounded-full mb-6">
-              <svg
-                className="h-8 w-8 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold mb-3">Partage Instantané</h3>
-            <p className="text-gray-600 mb-4">
-              Partagez vos informations professionnelles en un instant avec un
-              QR Code ou un lien personnalisé.
-            </p>
+          <div className="max-w-5xl mx-auto px-8">
+            <HoverEffect items={projects} />
           </div>
         </div>
       </section>
+
+      {/* Pourquoi Choisir Agno Section */}
+      <section className="w-full py-16 bg-[#FFF8F8]">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-16">
+            {/* Left Column */}
+            <div className="w-full lg:w-[45%]">
+              <h2 className="text-[32px] font-bold text-gray-900 mb-3">
+                Pourquoi Choisir Agno ?
+              </h2>
+              <p className="text-gray-600 mb-10">
+                Les avantages des cartes digitales par rapport aux cartes papier
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 w-5 h-5 bg-[#FFF8E7] rounded-md flex items-center justify-center">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-[#FFB800]"
+                    >
+                      <path
+                        d="M11.6667 3.5L5.25 9.91667L2.33333 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-gray-900">
+                      Écologique :{" "}
+                    </span>
+                    <span className="text-gray-600">
+                      Réduisez votre impact environnemental avec des cartes
+                      digitales.
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 w-5 h-5 bg-[#FFF8E7] rounded-md flex items-center justify-center">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-[#FFB800]"
+                    >
+                      <path
+                        d="M11.6667 3.5L5.25 9.91667L2.33333 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-gray-900">
+                      Économique :{" "}
+                    </span>
+                    <span className="text-gray-600">
+                      Évitez les coûts d'impression et de réimpression.
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 w-5 h-5 bg-[#FFF8E7] rounded-md flex items-center justify-center">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-[#FFB800]"
+                    >
+                      <path
+                        d="M11.6667 3.5L5.25 9.91667L2.33333 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-gray-900">
+                      Pratique :{" "}
+                    </span>
+                    <span className="text-gray-600">
+                      Accédez à vos cartes à tout moment, partout, depuis votre
+                      smartphone.
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 w-5 h-5 bg-[#FFF8E7] rounded-md flex items-center justify-center">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-[#FFB800]"
+                    >
+                      <path
+                        d="M11.6667 3.5L5.25 9.91667L2.33333 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-gray-900">
+                      Interactivité :{" "}
+                    </span>
+                    <span className="text-gray-600">
+                      Intégrez des liens vers vos réseaux sociaux, votre site
+                      web, et plus encore.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column */}
+            <div className="w-full lg:w-[55%]">
+              <div className="relative w-full aspect-[16/9] rounded-[2.5rem] overflow-hidden bg-[#FFF8F8]">
+                {/* Fond dégradé avec la forme exacte */}
+                <div className="absolute inset-0">
+                  <div
+                    className="absolute inset-0 transform -skew-y-6"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #FF4B4B 0%, #FF6B6B 50%, #FFE5E5 100%)",
+                      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+                    }}
+                  />
+                </div>
+
+                {/* Image du téléphone */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center">
+                  <div className="relative w-[85%] max-w-[500px]">
+                    <div
+                      className="w-full h-auto"
+                      style={{
+                        filter: "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15))",
+                        transform: "scale(0.85)",
+                      }}
+                    >
+                      <div className="relative bg-white rounded-[2rem] overflow-hidden">
+                        <div className="w-full max-w-[400px] mx-auto p-4">
+                          <DigitalCard />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* card  */}
+
+      <div className="min-h-screen">
+        <div className="orange-gradient-bg rounded-[2rem] mx-4 my-8 overflow-hidden">
+          <div className="diagonal-lines" />
+          <div className="content py-12 px-8">
+            <div className="flex flex-col md:flex-row justify-between items-start max-w-6xl mx-auto">
+              <div className="text-white mb-8 md:mb-0 md:w-1/2">
+                <h1 className="text-4xl font-bold mb-4">
+                  Gérez vos cartes facilement :
+                </h1>
+                <p className="text-xl mb-6">
+                  Connectez-vous à votre espace client pour :
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-xl">•</span>
+                    <span>Modifier vos cartes existantes.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-xl">•</span>
+                    <span>Suivre vos commandes et livraisons.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-xl">•</span>
+                    <span>
+                      Accéder à des statistiques sur l'utilisation de vos
+                      cartes.
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-xl">•</span>
+                    <span>Créer de nouvelles cartes en toute simplicité.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex flex-col md:w-1/2 md:pl-8 w-full relative">
+                {/* Cards with zigzag layout */}
+                <div className="relative space-y-6">
+                  {/* First card - shifted slightly right */}
+                  <div className="card ml-auto mr-4 md:w-[90%]">
+                    <div className="mr-6 text-orange-500">
+                      <QrCode size={38} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">500 scans</p>
+                      <p className="text-gray-500">Ce mois-ci</p>
+                    </div>
+                  </div>
+
+                  {/* Second card - shifted left */}
+                  <div className="card ml-2 md:w-[95%]">
+                    <div className="mr-6 text-black">
+                      <FileText size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-bold text-lg">Cartes créées</p>
+                    </div>
+                    <div className="ml-auto">
+                      <span className="font-bold text-lg text-orange-500">
+                        81
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Third card - shifted right again */}
+                  <div className="card ml-auto mr-10 md:w-[85%]">
+                    <div className="mr-6 text-blue-500">
+                      <GraduationCap size={24} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">Résumé du compte</p>
+                      <p className="text-gray-500">
+                        Progression du réseau +45% ce trimestre
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Transformez votre Networking Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-700 to-gray-800 text-white">
-        <div className="agno-container flex flex-col lg:flex-row items-center gap-12">
-          <div className="lg:w-1/2">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-8">
-              Transformez votre Networking
-              <span className="inline-block bg-gray-600 text-white px-6 py-2 mt-4 rounded-full">
-                avec
-              </span>
-              <span className="inline-block bg-gray-600 text-white px-6 py-2 ml-2 rounded-full">
-                Agno
-              </span>
-            </h2>
-            <p className="text-xl mb-8">
-              Transformez votre Networking avec Agno
-            </p>
-          </div>
-          <div className="lg:w-1/2 relative">
-            <div className="absolute bottom-0 right-10 w-24 h-24 bg-gray-800 rounded-full z-0">
-              &nbsp;
-            </div>
-            <div className="absolute top-20 left-10 w-16 h-16 bg-gray-600/30 rounded-full z-0">
-              &nbsp;
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
-      <section className="bg-gray-700 py-16 text-white">
-        <div className="agno-container text-center">
+      <section className="bg-gray-800 py-16 text-white">
+        <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Prêt à transformer votre networking?
           </h2>
@@ -345,7 +459,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link
               href="/creer-carte"
-              className="bg-white text-gray-700 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors"
+              className="bg-white text-gray-800 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors"
             >
               Créer votre carte gratuitement
             </Link>

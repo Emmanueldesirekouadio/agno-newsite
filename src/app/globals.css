@@ -28,6 +28,8 @@
     /* Custom colors for Agno */
     --agno-red: 0 80% 50%;
     --agno-yellow: 40 100% 50%;
+    --orange-primary: #f7931e;
+    --orange-dark: #f15a24;
   }
 
   .dark {
@@ -111,16 +113,17 @@
   }
 
   .animate-scroll {
-    animation: scroll 30s linear infinite;
+    animation: scroll 20s linear infinite;
+    will-change: transform;
   }
 }
 
 @keyframes scroll {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-100%);
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -139,3 +142,120 @@
 .agno-button-outline {
   @apply border-2 border-primary text-primary hover:bg-primary/10;
 }
+
+.orange-gradient-bg {
+  background-color: var(--orange-primary);
+  background-image: linear-gradient(
+    120deg,
+    var(--orange-primary),
+    var(--orange-dark)
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.diagonal-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  z-index: 1;
+  opacity: 0.7;
+  transform: skewX(-20deg) translateX(20%);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-bottom: 0;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for cards */
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Specific card styles */
+.card:nth-child(1) {
+  background: white;
+}
+
+.card:nth-child(2) {
+  background: white;
+}
+
+.card:nth-child(3) {
+  background: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* FAQ Styles */
+.faq-section {
+  @apply max-w-3xl mx-auto space-y-4;
+}
+
+.faq-item {
+  @apply border-b border-gray-200;
+}
+
+.faq-button {
+  @apply flex justify-between items-center w-full py-4 text-left transition-colors hover:text-[#f7931e];
+}
+
+.faq-question {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.faq-answer {
+  @apply max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+.faq-item[data-open="true"] .faq-answer {
+  @apply max-h-96 pb-4 text-gray-600;
+}
+
+.faq-icon {
+  @apply h-6 w-6 text-gray-400 transition-transform duration-300;
+}
+
+.faq-item[data-open="true"] .faq-icon {
+  @apply transform rotate-180;
+}
+
+/* End FAQ Styles */

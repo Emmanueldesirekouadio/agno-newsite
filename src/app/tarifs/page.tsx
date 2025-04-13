@@ -4,61 +4,55 @@ export default function TarifsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-agno to-agno-dark text-white py-16 md:py-24">
-        <div className="agno-container text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Nos Tarifs
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto">
-            Des offres adaptées à vos besoins, de l'utilisation personnelle aux
-            solutions d'entreprise
-          </p>
+      <section className="py-16 md:py-24 bg-white">
+        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-gray-600 text-lg mb-4">Nos tarifs</p>
+            <div className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              <h1 className="mb-2">
+                <span className="bg-[#e7302a] text-white px-4 py-1 rounded-sm">
+                  Choisissez le plan
+                </span>
+                <span className="text-[#f7931e]"> qui</span>
+              </h1>
+              <h2 className="text-[#f7931e] text-3xl md:text-4xl lg:text-5xl">
+                vous convient le mieux.
+              </h2>
+            </div>
+            <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto mt-8">
+              Découvrez nos différentes options de tarification conçues pour
+              répondre à tous vos besoins professionnels.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Pricing Plans Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="agno-container">
-          <div className="flex flex-wrap mb-10 justify-center items-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mr-4">
-              Nos forfaits
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Plans Disponibles
             </h2>
-            <div className="flex items-center mt-4 md:mt-0 bg-gray-200 p-1 rounded-full">
-              <button className="px-4 py-2 rounded-full bg-white text-agno shadow-sm font-medium">
-                Mensuel
-              </button>
-              <button className="px-4 py-2 rounded-full text-gray-700 font-medium">
-                Annuel (-20%)
-              </button>
-            </div>
+            <p className="text-gray-600">
+              Nous avons un plan adapté à votre situation.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Gratuit Plan */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 transition-transform hover:scale-[1.01]">
-              <div className="p-8">
-                <h3 className="text-xl font-bold mb-4">Gratuit</h3>
-                <div className="text-4xl font-bold mb-6">
-                  0€{" "}
-                  <span className="text-sm font-normal text-gray-500">
-                    /mois
-                  </span>
-                </div>
-                <p className="text-gray-600 mb-6">
-                  Parfait pour commencer avec les cartes digitales
-                </p>
-                <Link
-                  href="/inscription?plan=gratuit"
-                  className="block text-center py-3 px-4 bg-white border-2 border-agno text-agno font-semibold rounded-lg hover:bg-agno-dark transition-colors"
-                >
-                  Commencer gratuitement
-                </Link>
-              </div>
-              <div className="border-t border-gray-200 p-8">
-                <ul className="space-y-4">
-                  <li className="flex items-start">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Basique Plan */}
+            <div className="bg-white rounded-3xl p-8">
+              <h3 className="text-xl font-bold mb-2">Basique</h3>
+              <p className="text-gray-600 text-sm mb-6">
+                Une carte de visite connectée complète et prête à l'emploi, sans
+                abonnement.
+              </p>
+              <div className="text-3xl font-bold mb-8">2500 Fcfa</div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -70,11 +64,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>2 cartes de visite digitales</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Carte de visite connectée</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -86,11 +82,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Modèles de base</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Profil digital personnalisable</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -102,11 +100,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Partage par QR code</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Mise à jour illimitée des informations</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -118,11 +118,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Statistiques basiques</span>
-                  </li>
-                  <li className="flex items-start text-gray-400">
+                  </div>
+                  <span>Collecte des leads</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-gray-300 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -131,59 +133,36 @@ export default function TarifsPage() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
+                        d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Personnalisation avancée</span>
-                  </li>
-                  <li className="flex items-start text-gray-400">
-                    <svg
-                      className="h-5 w-5 text-gray-300 mr-2 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                    <span>Gestion des contacts</span>
-                  </li>
-                </ul>
-              </div>
+                  </div>
+                  <span>Gestion d'équipe centralisée</span>
+                </li>
+              </ul>
+              <Link
+                href="/inscription"
+                className="block text-center py-3 text-[#f7931e] font-medium hover:text-orange-600"
+              >
+                S'inscrire gratuitement
+              </Link>
             </div>
 
-            {/* Pro Plan */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-agno transform scale-[1.02] relative z-10">
-              <div className="absolute top-0 right-0 bg-agno text-white text-xs font-bold px-3 py-1 uppercase tracking-wide">
-                Populaire
+            {/* Standard Plan */}
+            <div className="bg-[#f7931e] rounded-3xl p-8 text-white transform scale-105">
+              <h3 className="text-xl font-bold mb-2">Standard</h3>
+              <p className="text-white/90 text-sm mb-6">
+                Expérimenter le pouvoir des possibilités infinies
+              </p>
+              <div className="text-3xl font-bold mb-4">4500 Fcfa</div>
+              <div className="inline-block bg-orange-600/20 text-white rounded-full px-4 py-1 text-sm mb-8">
+                Économisez 50%
               </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold mb-4">Pro</h3>
-                <div className="text-4xl font-bold mb-6">
-                  9.99€{" "}
-                  <span className="text-sm font-normal text-gray-500">
-                    /mois
-                  </span>
-                </div>
-                <p className="text-gray-600 mb-6">
-                  Pour les professionnels qui veulent se démarquer
-                </p>
-                <Link
-                  href="/inscription?plan=pro"
-                  className="block text-center py-3 px-4 bg-agno text-white font-semibold rounded-lg hover:bg-agno-dark transition-colors"
-                >
-                  Commencer l'essai gratuit
-                </Link>
-              </div>
-              <div className="border-t border-gray-200 p-8">
-                <ul className="space-y-4">
-                  <li className="flex items-start">
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -195,13 +174,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>
-                      <strong>10 cartes de visite digitales</strong>
-                    </span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Carte de visite connectée</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -213,11 +192,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Tous les modèles premium</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Profil digital personnalisable</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -229,11 +210,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Personnalisation avancée</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Mise à jour illimitée des informations</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -245,11 +228,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Partage multicanal</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Collecte des leads</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -261,53 +246,30 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Statistiques avancées</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Gestion des contacts</span>
-                  </li>
-                </ul>
-              </div>
+                  </div>
+                  <span>Gestion d'équipe centralisée</span>
+                </li>
+              </ul>
+              <Link
+                href="/inscription"
+                className="block text-center py-3 bg-white text-[#f7931e] rounded-full font-medium hover:bg-orange-50"
+              >
+                Passer à la version pro
+              </Link>
             </div>
 
-            {/* Enterprise Plan */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 transition-transform hover:scale-[1.01]">
-              <div className="p-8">
-                <h3 className="text-xl font-bold mb-4">Entreprise</h3>
-                <div className="text-4xl font-bold mb-6">
-                  29.99€{" "}
-                  <span className="text-sm font-normal text-gray-500">
-                    /mois
-                  </span>
-                </div>
-                <p className="text-gray-600 mb-6">
-                  Pour les équipes et entreprises
-                </p>
-                <Link
-                  href="/contact?subject=enterprise"
-                  className="block text-center py-3 px-4 bg-white border-2 border-agno text-agno font-semibold rounded-lg hover:bg-agno-dark transition-colors"
-                >
-                  Nous contacter
-                </Link>
-              </div>
-              <div className="border-t border-gray-200 p-8">
-                <ul className="space-y-4">
-                  <li className="flex items-start">
+            {/* Premium Plan */}
+            <div className="bg-white rounded-3xl p-8">
+              <h3 className="text-xl font-bold mb-2">Premium</h3>
+              <p className="text-gray-600 text-sm mb-6">
+                Découvrez de nouveaux superpouvoirs
+              </p>
+              <div className="text-3xl font-bold mb-8">7500 Fcfa</div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -319,13 +281,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>
-                      <strong>Cartes illimitées</strong>
-                    </span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Carte de visite connectée</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -337,11 +299,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Gestion d'équipe</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Profil digital personnalisable</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -353,11 +317,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Intégration à votre marque</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Mise à jour illimitée des informations</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -369,11 +335,13 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>API dédiée</span>
-                  </li>
-                  <li className="flex items-start">
+                  </div>
+                  <span>Collecte des leads</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
                     <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      className="w-4 h-4 text-orange-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -385,100 +353,208 @@ export default function TarifsPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Support prioritaire</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="h-5 w-5 text-green-500 mr-2 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Formations personnalisées</span>
-                  </li>
-                </ul>
-              </div>
+                  </div>
+                  <span>Gestion d'équipe centralisée</span>
+                </li>
+              </ul>
+              <Link
+                href="/inscription"
+                className="block text-center py-3 text-[#f7931e] font-medium hover:text-orange-600"
+              >
+                Version entreprise
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Special Offers Section */}
+      <section className="px-4 sm:px-6 lg:px-8 mt-16 mb-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-[#FFE4E4] rounded-2xl p-8 relative overflow-hidden shadow-sm">
+            <div className="absolute top-4 right-4">
+              <svg
+                className="w-12 h-12 text-[#e7302a]"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M3.38 8A9.502 9.502 0 0112 2.5a9.502 9.502 0 019.215 7.182.75.75 0 101.456-.364C21.473 4.539 17.15 1 12 1a10.995 10.995 0 00-9.5 5.452V4.75a.75.75 0 00-1.5 0V8.5a1 1 0 001 1h3.75a.75.75 0 000-1.5H3.38zm-.595 6.318a.75.75 0 00-1.455.364C2.527 19.461 6.85 23 12 23c4.052 0 7.592-2.191 9.5-5.451v1.701a.75.75 0 001.5 0V15.5a1 1 0 00-1-1h-3.75a.75.75 0 000 1.5h2.37A9.502 9.502 0 0112 21.5c-4.446 0-8.181-3.055-9.215-7.182z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-[#e7302a] mb-4">
+              Offres spéciales
+            </h3>
+            <p className="text-gray-800 text-lg max-w-3xl">
+              Inscrivez-vous maintenant et{" "}
+              <span className="bg-[#e7302a] text-white px-2 py-1 rounded-md">
+                bénéficiez de 20% de réduction
+              </span>{" "}
+              sur votre premier mois avec le code promo AGNO20.
+            </p>
+            <Link
+              href="/inscription"
+              className="inline-block mt-6 text-[#e7302a] font-medium hover:text-[#cc0000]"
+            >
+              Obtenir la réduction
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Explore Range Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="agno-container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
-            Questions Fréquentes
-          </h2>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Explorez la gamme
+            </h2>
+            <p className="text-gray-600">
+              Découvrez nos différents modèles de cartes de visite connectées
+            </p>
+          </div>
 
+          {/* Main Card */}
+          <div className="bg-gray-100 rounded-2xl p-8 mb-12">
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="flex-1">
+                <img
+                  src="/card1.png"
+                  alt="Carte de visite en PVC blanc"
+                  className="w-full max-w-[300px]"
+                />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-4">
+                  Carte de visite en PVC blanc
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Élégante et professionnelle, notre carte en PVC blanc offre
+                  une finition premium.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-1">Dimensions :</p>
+                    <p className="text-gray-600">85,5x54 mm</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Poids :</p>
+                    <p className="text-gray-600">5g</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Épaisseur :</p>
+                    <p className="text-gray-600">0,72 mm</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Technologie :</p>
+                    <p className="text-gray-600">NFC et QR code</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Compatibilité :</p>
+                    <p className="text-gray-600">iOS & Android</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Small Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-6 border border-gray-200 rounded-xl">
-              <h3 className="text-xl font-bold mb-4">
-                Puis-je changer de forfait à tout moment?
-              </h3>
-              <p className="text-gray-600">
-                Oui, vous pouvez passer à un niveau supérieur à tout moment. Si
-                vous passez à un forfait inférieur, le changement sera effectif
-                à la fin de votre cycle de facturation.
-              </p>
+            {/* Black Card */}
+            <div className="bg-gray-100 rounded-2xl p-8">
+              <div className="flex flex-col gap-6">
+                <img
+                  src="/card1.png"
+                  alt="Carte de visite en PVC noir"
+                  className="w-full max-w-[200px] mx-auto"
+                />
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    Carte de visite en PVC noir
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    Design élégant et moderne pour un impact maximal
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <p>
+                      <span className="font-semibold">Dimensions :</span>{" "}
+                      85,5x54 mm
+                    </p>
+                    <p>
+                      <span className="font-semibold">Poids :</span> 5g
+                    </p>
+                    <p>
+                      <span className="font-semibold">Épaisseur :</span> 0,72 mm
+                    </p>
+                    <p>
+                      <span className="font-semibold">Technologie :</span> NFC
+                      et QR code
+                    </p>
+                    <p>
+                      <span className="font-semibold">Compatibilité :</span> iOS
+                      & Android
+                    </p>
+                  </div>
+                  <div className="text-xl font-bold mb-4">5000 Fcfa</div>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Tarif dégressif selon quantité
+                  </p>
+                  <Link
+                    href="/commander"
+                    className="inline-block bg-[#f7931e] text-white px-6 py-2 rounded-full hover:bg-[#e07d0d] transition-colors"
+                  >
+                    Acheter
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            <div className="p-6 border border-gray-200 rounded-xl">
-              <h3 className="text-xl font-bold mb-4">
-                Y a-t-il un essai gratuit?
-              </h3>
-              <p className="text-gray-600">
-                Oui, nous offrons un essai gratuit de 14 jours pour notre plan
-                Pro. Aucune carte de crédit n'est requise pour l'essai.
-              </p>
-            </div>
-
-            <div className="p-6 border border-gray-200 rounded-xl">
-              <h3 className="text-xl font-bold mb-4">
-                Comment fonctionne la facturation?
-              </h3>
-              <p className="text-gray-600">
-                La facturation se fait mensuellement ou annuellement, selon
-                votre choix. Pour le plan annuel, vous bénéficiez d'une remise
-                de 20%.
-              </p>
-            </div>
-
-            <div className="p-6 border border-gray-200 rounded-xl">
-              <h3 className="text-xl font-bold mb-4">
-                Puis-je annuler à tout moment?
-              </h3>
-              <p className="text-gray-600">
-                Oui, vous pouvez annuler votre abonnement à tout moment. Votre
-                accès sera maintenu jusqu'à la fin de la période payée.
-              </p>
-            </div>
-
-            <div className="p-6 border border-gray-200 rounded-xl">
-              <h3 className="text-xl font-bold mb-4">
-                Comment fonctionne le plan Entreprise?
-              </h3>
-              <p className="text-gray-600">
-                Le plan Entreprise est personnalisé selon vos besoins.
-                Contactez-nous pour discuter de vos exigences et obtenir un
-                devis sur mesure.
-              </p>
-            </div>
-
-            <div className="p-6 border border-gray-200 rounded-xl">
-              <h3 className="text-xl font-bold mb-4">
-                Y a-t-il des frais cachés?
-              </h3>
-              <p className="text-gray-600">
-                Non, notre politique de tarification est transparente. Le prix
-                affiché est le prix que vous payez, sans frais cachés.
-              </p>
+            {/* Orange Card */}
+            <div className="bg-gray-100 rounded-2xl p-8">
+              <div className="flex flex-col gap-6">
+                <img
+                  src="/card2.png"
+                  alt="Carte de visite en PVC orange"
+                  className="w-full max-w-[200px] mx-auto"
+                />
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    Carte de visite en PVC orange
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    Une touche de couleur pour se démarquer
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <p>
+                      <span className="font-semibold">Dimensions :</span>{" "}
+                      85,5x54 mm
+                    </p>
+                    <p>
+                      <span className="font-semibold">Poids :</span> 5g
+                    </p>
+                    <p>
+                      <span className="font-semibold">Épaisseur :</span> 0,72 mm
+                    </p>
+                    <p>
+                      <span className="font-semibold">Technologie :</span> NFC
+                      et QR code
+                    </p>
+                    <p>
+                      <span className="font-semibold">Compatibilité :</span> iOS
+                      & Android
+                    </p>
+                  </div>
+                  <div className="text-xl font-bold mb-4">5000 Fcfa</div>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Tarif dégressif selon quantité
+                  </p>
+                  <Link
+                    href="/commander"
+                    className="inline-block bg-[#f7931e] text-white px-6 py-2 rounded-full hover:bg-[#e07d0d] transition-colors"
+                  >
+                    Acheter
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -496,13 +572,13 @@ export default function TarifsPage() {
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link
               href="/inscription"
-              className="bg-white text-agno agno-button hover:bg-agno-dark transition-colors"
+              className="bg-white text-agno agno-button hover:bg-gray-100 hover:text-agno-dark transition-colors"
             >
               Créer un compte
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-white text-white agno-button hover:bg-white/10 transition-colors"
+              className="border-2 border-white text-white agno-button hover:bg-white/20 transition-colors"
             >
               Nous contacter
             </Link>
