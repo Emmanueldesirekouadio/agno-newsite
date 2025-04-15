@@ -28,26 +28,28 @@ export default function TarifsPage() {
       </section>
 
       {/* Pricing Plans Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-orange-50 to-orange-100">
+      <section className="section-padding bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="agno-container">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-contrast">
               Plans Disponibles
             </h2>
-            <p className="text-gray-600">
+            <p className="text-muted text-lg">
               Nous avons un plan adapté à votre situation.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Basique Plan */}
-            <div className="bg-white rounded-3xl p-8">
-              <h3 className="text-xl font-bold mb-2">Basique</h3>
-              <p className="text-gray-600 text-sm mb-6">
+            <div className="agno-card bg-white p-6 sm:p-8 hover-lift">
+              <h3 className="text-xl font-bold mb-2 text-contrast">Basique</h3>
+              <p className="text-muted text-sm mb-6">
                 Une carte de visite connectée complète et prête à l'emploi, sans
                 abonnement.
               </p>
-              <div className="text-3xl font-bold mb-8">2500 Fcfa</div>
+              <div className="text-3xl font-bold mb-8 text-contrast">
+                2500 Fcfa
+              </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -65,7 +67,7 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Carte de visite connectée</span>
+                  <span className="text-muted">Carte de visite connectée</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -83,7 +85,9 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Profil digital personnalisable</span>
+                  <span className="text-muted">
+                    Profil digital personnalisable
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -101,7 +105,9 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Mise à jour illimitée des informations</span>
+                  <span className="text-muted">
+                    Mise à jour illimitée des informations
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -119,7 +125,7 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Collecte des leads</span>
+                  <span className="text-muted">Collecte des leads</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -137,25 +143,26 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Gestion d'équipe centralisée</span>
+                  <span className="text-muted">
+                    Gestion d'équipe centralisée
+                  </span>
                 </li>
               </ul>
-              <Link
-                href="/inscription"
-                className="block text-center py-3 text-[#f7931e] font-medium hover:text-orange-600"
-              >
-                S'inscrire gratuitement
-              </Link>
+              <button className="agno-button-primary w-full">
+                Choisir ce plan
+              </button>
             </div>
 
             {/* Standard Plan */}
-            <div className="bg-[#f7931e] rounded-3xl p-8 text-white transform scale-105">
-              <h3 className="text-xl font-bold mb-2">Standard</h3>
+            <div className="agno-card bg-[#f7931e] p-6 sm:p-8 hover-lift transform scale-105">
+              <h3 className="text-xl font-bold mb-2 text-white">Standard</h3>
               <p className="text-white/90 text-sm mb-6">
                 Expérimenter le pouvoir des possibilités infinies
               </p>
-              <div className="text-3xl font-bold mb-4">4500 Fcfa</div>
-              <div className="inline-block bg-orange-600/20 text-white rounded-full px-4 py-1 text-sm mb-8">
+              <div className="text-3xl font-bold mb-4 text-white">
+                4500 Fcfa
+              </div>
+              <div className="inline-block bg-white/20 text-white rounded-full px-4 py-1 text-sm mb-8">
                 Économisez 50%
               </div>
               <ul className="space-y-4 mb-8">
@@ -175,7 +182,7 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Carte de visite connectée</span>
+                  <span className="text-white">Carte de visite connectée</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
@@ -193,7 +200,9 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Profil digital personnalisable</span>
+                  <span className="text-white">
+                    Profil digital personnalisable
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
@@ -211,7 +220,9 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Mise à jour illimitée des informations</span>
+                  <span className="text-white">
+                    Mise à jour illimitée des informations
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
@@ -229,7 +240,7 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Collecte des leads</span>
+                  <span className="text-white">Collecte des leads</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
@@ -247,24 +258,25 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Gestion d'équipe centralisée</span>
+                  <span className="text-white">
+                    Gestion d'équipe centralisée
+                  </span>
                 </li>
               </ul>
-              <Link
-                href="/inscription"
-                className="block text-center py-3 bg-white text-[#f7931e] rounded-full font-medium hover:bg-orange-50"
-              >
-                Passer à la version pro
-              </Link>
+              <button className="agno-button bg-white text-[#f7931e] hover:bg-white/90 w-full">
+                Choisir ce plan
+              </button>
             </div>
 
             {/* Premium Plan */}
-            <div className="bg-white rounded-3xl p-8">
-              <h3 className="text-xl font-bold mb-2">Premium</h3>
-              <p className="text-gray-600 text-sm mb-6">
+            <div className="agno-card bg-white p-6 sm:p-8 hover-lift">
+              <h3 className="text-xl font-bold mb-2 text-contrast">Premium</h3>
+              <p className="text-muted text-sm mb-6">
                 Découvrez de nouveaux superpouvoirs
               </p>
-              <div className="text-3xl font-bold mb-8">7500 Fcfa</div>
+              <div className="text-3xl font-bold mb-8 text-contrast">
+                7500 Fcfa
+              </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -282,7 +294,7 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Carte de visite connectée</span>
+                  <span className="text-muted">Carte de visite connectée</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -300,7 +312,9 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Profil digital personnalisable</span>
+                  <span className="text-muted">
+                    Profil digital personnalisable
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -318,7 +332,9 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Mise à jour illimitée des informations</span>
+                  <span className="text-muted">
+                    Mise à jour illimitée des informations
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -336,7 +352,7 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Collecte des leads</span>
+                  <span className="text-muted">Collecte des leads</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
@@ -354,15 +370,14 @@ export default function TarifsPage() {
                       />
                     </svg>
                   </div>
-                  <span>Gestion d'équipe centralisée</span>
+                  <span className="text-muted">
+                    Gestion d'équipe centralisée
+                  </span>
                 </li>
               </ul>
-              <Link
-                href="/inscription"
-                className="block text-center py-3 text-[#f7931e] font-medium hover:text-orange-600"
-              >
-                Version entreprise
-              </Link>
+              <button className="agno-button-primary w-full">
+                Choisir ce plan
+              </button>
             </div>
           </div>
         </div>

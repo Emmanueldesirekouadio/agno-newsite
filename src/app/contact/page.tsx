@@ -1,10 +1,30 @@
 "use client";
 
+import { addDoc, collection } from "firebase/firestore";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { db } from "../../../ firebase";
+
+type ContactFormData = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 export default function ContactPage() {
   const [openQuestions, setOpenQuestions] = useState<number[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>();
 
   const toggleQuestion = (index: number) => {
     setOpenQuestions((prev) =>
@@ -12,57 +32,118 @@ export default function ContactPage() {
     );
   };
 
+  // Fermer le popup après 5 secondes
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
+    try {
+      // Ajouter le message à la collection "contacts" dans Firestore
+      const contactsRef = collection(db, "contacts");
+      await addDoc(contactsRef, {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        timestamp: new Date(),
+        status: "non lu", // Statut pour suivre si le message a été lu
+      });
+
+      // Réinitialiser le formulaire et afficher le message de succès
+      reset();
+      setSubmitSuccess(true);
+      setShowPopup(true);
+    } catch (error) {
+      console.error("Erreur lors de l'envoi du message:", error);
+      setSubmitError(
+        "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="flex flex-col">
+      {/* Popup de confirmation */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-xl p-6 max-w-md w-full mx-4 transform transition-all animate-fade-in">
+            <div className="flex items-center justify-center mb-4">
+              <div className="bg-green-100 rounded-full p-3">
+                <svg
+                  className="h-8 w-8 text-green-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            </div>
+            <h3 className="text-xl font-bold text-center text-gray-800 mb-2">
+              Message envoyé avec succès!
+            </h3>
+            <p className="text-gray-600 text-center mb-4">
+              Nous avons bien reçu votre message et vous répondrons dans les
+              plus brefs délais.
+            </p>
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="bg-agno text-white px-6 py-2 rounded-lg font-medium hover:bg-agno-dark transition-colors"
+              >
+                Fermer
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-white via-[#fff5eb] to-[#ffe4cc] py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-            <span className="text-[#f7931e]">Comment pouvons nous</span>
-          </h1>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4">
-            <span className="bg-[#f7931e] text-white px-8 py-2 rounded-full">
-              vous aider?
-            </span>
-          </h2>
+      <section className="bg-gradient-to-br from-white via-[#fff5eb] to-[#ffe4cc] section-padding">
+        <div className="agno-container">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              <span className="text-primary">Comment pouvons nous</span>
+            </h1>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+              <span className="bg-primary text-white px-6 sm:px-8 py-2 rounded-full inline-block">
+                vous aider?
+              </span>
+            </h2>
+          </div>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 md:py-24">
+      <section className="section-padding">
         <div className="agno-container">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8">
+            <div className="space-y-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-contrast">
                 Informations de contact
               </h2>
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-agno/10 p-3 rounded-full mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
                     <svg
-                      className="h-6 w-6 text-agno"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-1">Email</h3>
-                    <p className="text-gray-600">contact@agno.fr</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-agno/10 p-3 rounded-full mr-4">
-                    <svg
-                      className="h-6 w-6 text-agno"
+                      className="w-5 h-5 text-primary"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -76,14 +157,41 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Téléphone</h3>
-                    <p className="text-gray-600">+33 1 23 45 67 89</p>
+                    <h3 className="font-semibold text-lg text-contrast mb-1">
+                      Téléphone
+                    </h3>
+                    <p className="text-muted">+225 0789637733</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-agno/10 p-3 rounded-full mr-4">
+
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
                     <svg
-                      className="h-6 w-6 text-agno"
+                      className="w-5 h-5 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg text-contrast mb-1">
+                      Email
+                    </h3>
+                    <p className="text-muted">contact@agno.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-primary"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -103,69 +211,80 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Adresse</h3>
-                    <p className="text-gray-600">
-                      123 Rue de la République
-                      <br />
-                      75001 Paris, France
-                    </p>
+                    <h3 className="font-semibold text-lg text-contrast mb-1">
+                      Adresse
+                    </h3>
+                    <p className="text-muted">Abidjan, Côte d'Ivoire</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div>
+            <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-contrast mb-6">
+                Envoyez-nous un message
+              </h2>
               <form className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Nom complet
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
-                    placeholder="John Doe"
-                  />
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-contrast mb-2"
+                    >
+                      Nom complet
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-base transition-colors"
+                      placeholder="Votre nom"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-contrast mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-base transition-colors"
+                      placeholder="Votre email"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-contrast mb-2"
                   >
-                    Email
+                    Sujet
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
-                    placeholder="john@example.com"
+                    type="text"
+                    id="subject"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-base transition-colors"
+                    placeholder="Sujet de votre message"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-contrast mb-2"
                   >
                     Message
                   </label>
                   <textarea
                     id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
-                    placeholder="Votre message..."
+                    rows={6}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-base transition-colors resize-none"
+                    placeholder="Votre message"
                   ></textarea>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-agno text-white py-3 px-6 rounded-lg font-semibold hover:bg-white hover:text-agno-dark transition-colors"
-                >
+                <button type="submit" className="agno-button-primary w-full">
                   Envoyer le message
                 </button>
               </form>

@@ -1,33 +1,99 @@
 "use client";
 
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { auth, provider } from "../../../ firebase";
+
+type RegisterInputs = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  agreeTerms: boolean;
+};
 
 export default function InscriptionPage() {
-  const [formStep, setFormStep] = useState(1);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    company: "",
-    jobTitle: "",
-    agreeTerms: false,
-  });
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<RegisterInputs>();
+
+  const password = watch("password");
+
+  const onSubmit: SubmitHandler<RegisterInputs> = async (data) => {
+    setIsLoading(true);
+    setError("");
+
+    try {
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      setSuccess(true);
+      setTimeout(() => {
+        router.push("/connexion");
+      }, 2000);
+    } catch (err: any) {
+      console.error("Erreur d'inscription:", err);
+      let errorMessage = "Échec de l'inscription";
+
+      if (err.code === "auth/email-already-in-use") {
+        errorMessage = "Cette adresse email est déjà utilisée";
+      } else if (err.code === "auth/invalid-email") {
+        errorMessage = "Adresse email invalide";
+      } else if (err.code === "auth/operation-not-allowed") {
+        errorMessage = "L'inscription par email est désactivée";
+      } else if (err.code === "auth/weak-password") {
+        errorMessage = "Le mot de passe est trop faible";
+      } else if (err.code === "auth/network-request-failed") {
+        errorMessage = "Erreur de connexion réseau";
+      }
+
+      setError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would handle the form submission, like sending data to an API
-    alert("Inscription réussie ! Vous recevrez un email de confirmation.");
+  const signUpWithGoogle = async () => {
+    setIsLoading(true);
+    setError("");
+
+    try {
+      await signInWithPopup(auth, provider);
+      router.push("/dashboard"); // Redirect to dashboard after registration
+    } catch (err: any) {
+      console.error("Erreur de connexion Google:", err);
+      let errorMessage = "Échec de la connexion avec Google";
+
+      if (err.code === "auth/popup-closed-by-user") {
+        errorMessage = "La fenêtre de connexion a été fermée";
+      } else if (err.code === "auth/popup-blocked") {
+        errorMessage =
+          "La fenêtre de connexion a été bloquée par votre navigateur";
+      } else if (err.code === "auth/cancelled-popup-request") {
+        errorMessage = "La demande de connexion a été annulée";
+      } else if (err.code === "auth/account-exists-with-different-credential") {
+        errorMessage = "Un compte existe déjà avec cette adresse email";
+      } else if (err.code === "auth/network-request-failed") {
+        errorMessage = "Erreur de connexion réseau";
+      }
+
+      setError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -49,21 +115,92 @@ export default function InscriptionPage() {
       <section className="py-16 md:py-24">
         <div className="agno-container">
           <div className="max-w-md mx-auto">
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Nom complet
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
-                  placeholder="John Doe"
-                />
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+                {error}
+              </div>
+            )}
+
+            {success && (
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
+                Compte créé avec succès ! Redirection vers la page de
+                connexion...
+              </div>
+            )}
+
+            {/* Google Sign Up Button */}
+            <button
+              onClick={signUpWithGoogle}
+              disabled={isLoading}
+              className="w-full flex items-center justify-center gap-3 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 mb-6"
+            >
+              <Image
+                src="/images/google-icon.webp"
+                alt="Google"
+                width={20}
+                height={20}
+              />
+              {isLoading ? "Chargement..." : "S'inscrire avec Google"}
+            </button>
+
+            <div className="relative mb-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-gray-500">
+                  Ou s'inscrire avec votre email
+                </span>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Prénom
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    {...register("firstName", {
+                      required: "Le prénom est requis",
+                    })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
+                    placeholder="Prénom"
+                  />
+                  {errors.firstName && (
+                    <span className="text-red-500 text-sm mt-1">
+                      {errors.firstName.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    {...register("lastName", {
+                      required: "Le nom est requis",
+                    })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
+                    placeholder="Nom"
+                  />
+                  {errors.lastName && (
+                    <span className="text-red-500 text-sm mt-1">
+                      {errors.lastName.message}
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div>
@@ -76,10 +213,21 @@ export default function InscriptionPage() {
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  {...register("email", {
+                    required: "L'email est requis",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Adresse email invalide",
+                    },
+                  })}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
                   placeholder="john@example.com"
                 />
+                {errors.email && (
+                  <span className="text-red-500 text-sm mt-1">
+                    {errors.email.message}
+                  </span>
+                )}
               </div>
 
               <div>
@@ -89,13 +237,69 @@ export default function InscriptionPage() {
                 >
                   Mot de passe
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
-                  placeholder="••••••••"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    {...register("password", {
+                      required: "Le mot de passe est requis",
+                      minLength: {
+                        value: 6,
+                        message:
+                          "Le mot de passe doit contenir au moins 6 caractères",
+                      },
+                    })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno pr-10"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-5 h-5 text-gray-500"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-5 h-5 text-gray-500"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+                {errors.password && (
+                  <span className="text-red-500 text-sm mt-1">
+                    {errors.password.message}
+                  </span>
+                )}
               </div>
 
               <div>
@@ -105,24 +309,81 @@ export default function InscriptionPage() {
                 >
                   Confirmer le mot de passe
                 </label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno"
-                  placeholder="••••••••"
-                />
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    id="confirmPassword"
+                    {...register("confirmPassword", {
+                      required: "La confirmation du mot de passe est requise",
+                      validate: (value) =>
+                        value === password ||
+                        "Les mots de passe ne correspondent pas",
+                    })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agno focus:border-agno pr-10"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showConfirmPassword ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-5 h-5 text-gray-500"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-5 h-5 text-gray-500"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+                {errors.confirmPassword && (
+                  <span className="text-red-500 text-sm mt-1">
+                    {errors.confirmPassword.message}
+                  </span>
+                )}
               </div>
 
               <div className="flex items-center">
                 <input
-                  id="terms"
-                  name="terms"
+                  id="agreeTerms"
                   type="checkbox"
+                  {...register("agreeTerms", {
+                    required:
+                      "Vous devez accepter les conditions d'utilisation",
+                  })}
                   className="h-4 w-4 text-agno focus:ring-agno border-gray-300 rounded"
                 />
                 <label
-                  htmlFor="terms"
+                  htmlFor="agreeTerms"
                   className="ml-2 block text-sm text-gray-700"
                 >
                   J'accepte les{" "}
@@ -141,12 +402,18 @@ export default function InscriptionPage() {
                   </Link>
                 </label>
               </div>
+              {errors.agreeTerms && (
+                <span className="text-red-500 text-sm">
+                  {errors.agreeTerms.message}
+                </span>
+              )}
 
               <button
                 type="submit"
-                className="w-full bg-agno text-white py-3 px-6 rounded-lg font-semibold hover:bg-agno-dark transition-colors"
+                disabled={isLoading}
+                className="w-full bg-agno text-white py-3 px-6 rounded-lg font-semibold hover:bg-agno-dark transition-colors disabled:opacity-50"
               >
-                Créer un compte
+                {isLoading ? "Chargement..." : "Créer un compte"}
               </button>
             </form>
 

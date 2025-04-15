@@ -26,62 +26,62 @@ export default function Footer() {
 
           {/* Pages et Contact */}
           <div className="flex flex-col sm:flex-row gap-8 md:gap-16 w-full md:w-auto">
-            <div>
-              <h3 className="font-bold text-xl mb-4">Pages</h3>
+            <div className="space-y-6">
+              <h3 className="font-bold text-xl text-contrast">Pages</h3>
               <div className="grid gap-3">
                 <Link
                   href="/"
-                  className="text-gray-600 hover:text-[#d98200] text-sm md:text-base"
+                  className="text-muted hover:text-primary transition-colors text-sm md:text-base"
                 >
                   Accueil
                 </Link>
                 <Link
                   href="/fonctionnalites"
-                  className="text-gray-600 hover:text-[#d98200] text-sm md:text-base"
+                  className="text-muted hover:text-primary transition-colors text-sm md:text-base"
                 >
                   Fonctionnalités
                 </Link>
                 <Link
                   href="/espace-client"
-                  className="text-gray-600 hover:text-[#d98200] text-sm md:text-base"
+                  className="text-muted hover:text-primary transition-colors text-sm md:text-base"
                 >
                   Espace client
                 </Link>
                 <Link
                   href="/tarifs"
-                  className="text-gray-600 hover:text-[#d98200] text-sm md:text-base"
+                  className="text-muted hover:text-primary transition-colors text-sm md:text-base"
                 >
                   Tarifs
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-gray-600 hover:text-[#d98200] text-sm md:text-base"
+                  className="text-muted hover:text-primary transition-colors text-sm md:text-base"
                 >
                   Contact & support
                 </Link>
               </div>
             </div>
 
-            <div>
-              <h3 className="font-bold text-xl mb-4">Contact</h3>
-              <p className="text-gray-600 text-sm md:text-base">
+            <div className="space-y-6">
+              <h3 className="font-bold text-xl text-contrast">Contact</h3>
+              <p className="text-muted text-sm md:text-base">
                 Téléphone : +225 0789637733
               </p>
             </div>
           </div>
 
           {/* Newsletter */}
-          <div className="w-full md:max-w-sm">
-            <h3 className="font-bold text-xl mb-4">
+          <div className="w-full md:max-w-sm space-y-6">
+            <h3 className="font-bold text-xl text-contrast">
               S'inscrire à notre newsletter
             </h3>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="Entrer votre Email"
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#d98200] text-sm md:text-base"
+                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm md:text-base transition-colors"
               />
-              <button className="bg-[#d98200] text-white px-6 py-3 rounded-lg hover:bg-[#c77800] transition-colors text-sm md:text-base whitespace-nowrap">
+              <button className="bg-agno text-white px-6 py-3 rounded-lg font-medium hover:bg-agno/90 transition-colors text-sm md:text-base">
                 Envoyer
               </button>
             </div>
@@ -94,46 +94,50 @@ export default function Footer() {
             <div className="flex gap-4">
               <Link
                 href="#"
-                className="bg-white w-14 h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                className="hover-lift bg-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
               >
                 <Image
                   src="/icons/instagram.png"
                   alt="Instagram"
                   width={32}
                   height={32}
+                  className="w-6 h-6 sm:w-8 sm:h-8"
                 />
               </Link>
               <Link
                 href="#"
-                className="bg-white w-14 h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                className="hover-lift bg-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
               >
                 <Image
                   src="/icons/twitter.png"
                   alt="Twitter"
                   width={32}
                   height={32}
+                  className="w-6 h-6 sm:w-8 sm:h-8"
                 />
               </Link>
               <Link
                 href="#"
-                className="bg-white w-14 h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                className="hover-lift bg-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
               >
                 <Image
                   src="/icons/tiktok.png"
                   alt="TikTok"
                   width={32}
                   height={32}
+                  className="w-6 h-6 sm:w-8 sm:h-8"
                 />
               </Link>
               <Link
                 href="#"
-                className="bg-white w-14 h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                className="hover-lift bg-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
               >
                 <Image
                   src="/icons/youtube.png"
                   alt="YouTube"
                   width={32}
                   height={32}
+                  className="w-6 h-6 sm:w-8 sm:h-8"
                 />
               </Link>
             </div>

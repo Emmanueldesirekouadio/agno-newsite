@@ -5,16 +5,16 @@ export default function FonctionnalitesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-[#FFFCEE] py-6 md:py-10 px-4 md:px-10 lg:px-20 relative">
-        <div className="max-w-7xl mx-auto mb-12 md:mb-16">
-          <div className="flex flex-row items-start justify-between gap-4 md:gap-10">
+      <section className="bg-[#FFFCEE] py-4 sm:py-6 md:py-10 px-3 sm:px-4 md:px-10 lg:px-20 relative">
+        <div className="max-w-7xl mx-auto mb-8 sm:mb-12 md:mb-16">
+          <div className="flex flex-row items-start justify-between gap-3 sm:gap-4 md:gap-10">
             {/* Left Content */}
-            <div className="w-[45%] md:w-1/2 space-y-3 md:space-y-6 pt-2">
-              <h1 className="inline-block bg-[#F18701] text-white px-3 md:px-6 py-1.5 md:py-2 rounded-lg text-lg md:text-2xl lg:text-3xl">
+            <div className="w-[45%] md:w-1/2 space-y-2 sm:space-y-3 md:space-y-6 pt-1 sm:pt-2">
+              <h1 className="inline-block bg-[#F18701] text-white px-2 sm:px-3 md:px-6 py-1 sm:py-1.5 md:py-2 rounded-lg text-base sm:text-lg md:text-2xl lg:text-3xl">
                 Fonctionnalités AGNO
               </h1>
 
-              <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-gray-800 mt-2 md:mt-4 leading-tight">
+              <h2 className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold text-gray-800 mt-1 sm:mt-2 md:mt-4 leading-tight">
                 Explorez les outils qui simplifient votre communication.
               </h2>
 
@@ -143,12 +143,12 @@ export default function FonctionnalitesPage() {
       </section>
 
       {/* Features Tabs Section */}
-      <section className="py-16 md:py-24 bg-white w-full">
-        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 md:py-24 bg-white w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-3 sm:px-4 md:px-8">
           {/* Création de Carte Section */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-24">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 mb-16 sm:mb-24">
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-              <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]">
+              <div className="relative w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]">
                 <Image
                   src="/phone-screens/mockup.png"
                   alt="Création de carte"
@@ -158,11 +158,11 @@ export default function FonctionnalitesPage() {
                 />
               </div>
             </div>
-            <div className="w-full lg:w-1/2 space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+            <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
                 Création de Carte Personnalisée
               </h2>
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
                 Avec Agno, créez des cartes de visite uniques qui reflètent
                 votre identité professionnelle. Choisissez parmi une variété de
                 modèles, couleurs et polices pour personnaliser votre carte
@@ -207,13 +207,13 @@ export default function FonctionnalitesPage() {
       </section>
 
       {/* Suivi des Performances Section */}
-      <section className="py-16 md:py-24 bg-[#FFFCEE] w-full">
-        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+      <section className="py-12 sm:py-16 md:py-24 bg-[#FFFCEE] w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-3 sm:px-4 md:px-8">
+          <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
               Suivi des Performances
             </h2>
-            <p className="text-gray-600 text-base md:text-lg">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600">
               Accédez à des statistiques détaillées sur l'interaction avec vos
               cartes. Découvrez combien de fois vos cartes ont été consultées et
               optimisez votre approche de networking en fonction des données
@@ -222,12 +222,12 @@ export default function FonctionnalitesPage() {
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
             {/* Cartes */}
-            <div className="bg-white rounded-xl p-6 text-center">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 text-center">
+              <div className="flex justify-center mb-3 sm:mb-4">
                 <svg
-                  className="w-6 h-6 text-agno"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-agno"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -239,30 +239,36 @@ export default function FonctionnalitesPage() {
                   />
                 </svg>
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">10</div>
-              <div className="text-sm text-gray-600">Cartes</div>
+              <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
+                10
+              </div>
+              <div className="text-xs sm:text-sm text-gray-600">Cartes</div>
             </div>
 
             {/* Connaissances */}
-            <div className="bg-white rounded-xl p-6 text-center">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 text-center">
+              <div className="flex justify-center mb-3 sm:mb-4">
                 <svg
-                  className="w-6 h-6 text-agno"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-agno"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
                   <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                 </svg>
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">24</div>
-              <div className="text-sm text-gray-600">Connaissances</div>
+              <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
+                24
+              </div>
+              <div className="text-xs sm:text-sm text-gray-600">
+                Connaissances
+              </div>
             </div>
 
             {/* Produits */}
-            <div className="bg-white rounded-xl p-6 text-center">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 text-center">
+              <div className="flex justify-center mb-3 sm:mb-4">
                 <svg
-                  className="w-6 h-6 text-agno"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-agno"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -273,15 +279,17 @@ export default function FonctionnalitesPage() {
                   />
                 </svg>
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">45</div>
-              <div className="text-sm text-gray-600">Produits</div>
+              <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
+                45
+              </div>
+              <div className="text-xs sm:text-sm text-gray-600">Produits</div>
             </div>
 
             {/* Services */}
-            <div className="bg-white rounded-xl p-6 text-center">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 text-center">
+              <div className="flex justify-center mb-3 sm:mb-4">
                 <svg
-                  className="w-6 h-6 text-agno"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-agno"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -293,24 +301,26 @@ export default function FonctionnalitesPage() {
                   <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
                 </svg>
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">34</div>
-              <div className="text-sm text-gray-600">Services</div>
+              <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
+                34
+              </div>
+              <div className="text-xs sm:text-sm text-gray-600">Services</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Personnalisation Avancée Section */}
-      <section className="py-16 md:py-24 bg-[#FFFCEE] w-full">
-        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-24 bg-[#FFFCEE] w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-3 sm:px-4 md:px-8">
+          <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden">
             <div className="flex flex-col lg:flex-row">
               {/* Left Content */}
-              <div className="w-full lg:w-1/2 p-8 md:p-12">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-12">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                   Personnalisation Avancée
                 </h2>
-                <p className="text-gray-600 text-base md:text-lg mb-8">
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8">
                   Allez au-delà des designs standard ! Agno vous permet
                   d'ajouter des éléments interactifs tels que des liens vers vos
                   réseaux sociaux, votre site web ou même des vidéos de
@@ -318,7 +328,7 @@ export default function FonctionnalitesPage() {
                 </p>
                 <Link
                   href="/creer-carte"
-                  className="bg-agno text-white px-8 py-3 rounded-lg font-medium hover:bg-agno/90 transition-colors inline-block"
+                  className="bg-agno text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium hover:bg-agno/90 transition-colors inline-block text-sm sm:text-base"
                 >
                   Créer votre carte de visite
                 </Link>
@@ -349,25 +359,25 @@ export default function FonctionnalitesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-agno py-16 text-white w-full">
-        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="bg-agno py-12 sm:py-16 text-white w-full">
+        <div className="w-full max-w-[2400px] mx-auto px-3 sm:px-4 md:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
             Prêt à essayer nos fonctionnalités?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">
             Créez votre carte de visite digitale dès aujourd'hui et découvrez la
             puissance d'Agno.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
             <Link
               href="/creer-carte"
-              className="bg-white text-agno px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-colors"
+              className="bg-white text-agno px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium hover:bg-white/90 transition-colors text-sm sm:text-base"
             >
               Créer votre carte gratuitement
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/20 transition-colors"
+              className="border-2 border-white text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium hover:bg-white/20 transition-colors text-sm sm:text-base"
             >
               Nous contacter
             </Link>
