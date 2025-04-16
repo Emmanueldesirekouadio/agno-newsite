@@ -1,4 +1,7 @@
+"use client";
+
 import { HoverEffect } from "@/components/ui/hover-effect";
+import { motion } from "framer-motion";
 import {
   Clock,
   FileText,
@@ -28,149 +31,232 @@ export const projects = [
   },
 ] as const;
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="flex flex-col">
+    <main>
       {/* Hero Section */}
-      <section className="relative h-screen max-h-[800px] overflow-hidden">
-        <div className="absolute inset-0 z-0 flex items-start justify-end overflow-hidden">
-          <div className="relative w-[115%] h-full flex items-start justify-end -mr-[8%] -mt-[8%]">
-            <Image
-              src="/phone-screens/app-screen-2.png"
-              alt="Background"
-              width={1500}
-              height={1200}
-              sizes="100vw"
-              className="object-cover object-right opacity-85 blur-[1px] w-[100%] md:w-[88%] h-[105%]"
-              style={{
-                transform:
-                  "translateX(20%) scale(1.45) translateY(-15%) translateX(min(0px, calc(-25% + (var(--tw-translate-x)))))",
-                objectPosition: "calc(92% - 8vw) top",
-              }}
-              priority
-            />
-          </div>
-          {/* Enhanced Agno Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-agno from-20% via-agno/60 via-35% to-transparent to-70%" />
-          <div className="absolute inset-0 sm:hidden bg-gradient-to-b from-transparent via-agno/30 via-35% to-transparent" />
-        </div>
-
-        {/* Content */}
-        <div className="agno-container relative z-10 h-full flex flex-col justify-between">
-          <div className="flex flex-col md:flex-row items-center pt-8">
-            <div className="w-full md:w-1/2 mb-10 md:mb-0 pr-0 md:pr-8 animate-slide-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-black sm:text-white">
-                Transformez votre Networking{" "}
-                <span className="sm:hidden inline-block bg-[#e7302a] text-white px-6 py-2 mt-4 rounded-full">
-                  avec Agno
-                </span>
-                <span className="hidden sm:inline-block bg-[#e7302a] text-white px-6 py-2 mt-4 rounded-full">
+      <section className="relative bg-gradient-to-br from-[#FF9500] to-[#FF5F00] min-h-screen overflow-hidden">
+        <div className="container mx-auto px-4 py-20 flex items-center relative z-10">
+          <div className="w-full lg:w-1/2 text-white">
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+              Transformez votre{" "}
+              <span className="relative">
+                Networking
+                <motion.span
+                  className="absolute -right-6 top-[3.8rem] lg:top-[4.8rem] lg:-right-8 bg-red-500 px-2 py-1 rounded-lg text-white text-4xl"
+                  animate={{ rotate: [-4.5, 4.5] }}
+                  transition={{
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    duration: 2.5,
+                    ease: "easeInOut",
+                  }}
+                  style={{ transformOrigin: "50% 0%" }}
+                >
                   avec
-                </span>
-                <span className="hidden sm:inline-block bg-[#e7302a] text-white px-6 py-2 ml-2 rounded-full">
-                  Agno
-                </span>
-              </h1>
-              <p className="text-lg md:text-xl mb-8 text-black sm:text-white">
-                Des solutions innovantes pour créer et partager vos cartes de
-                visite, facilement et efficacement.
-              </p>
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                <Link
-                  href="/creer-carte"
-                  className="bg-white text-agno-600 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium flex items-center justify-center hover:bg-gray-100 hover:text-agno-700 transition-colors text-sm sm:text-base"
+                </motion.span>
+              </span>
+              <br />
+              <span className="inline-block mt-2 bg-red-500 px-4 py-2 rounded-lg transform -rotate-2">
+                Agno
+              </span>
+            </h1>
+            <p className="text-xl mb-8 opacity-90">
+              Transformez votre Networking avec AgnoTransformez votre Networking
+              avec Agno
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/creer-carte"
+                className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2"
+              >
+                Commencer
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  className="transform translate-x-1"
                 >
-                  Commencer{" "}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 sm:h-5 sm:w-5 ml-2"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </Link>
-                <Link
-                  href="/telecharger"
-                  className="border border-white text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium flex items-center justify-center hover:bg-white/10 transition-colors text-sm sm:text-base"
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+              <button className="text-white border-2 border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:bg-opacity-10 transition-all flex items-center gap-2">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 sm:h-5 sm:w-5 mr-2"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Télécharger l'application
-                </Link>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 relative">
-              <div className="relative h-[400px] w-full">{/*todo  */}</div>
+                  <path
+                    d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M7 10L12 15L17 10"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12 15V3"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Télécharger l'application
+              </button>
             </div>
           </div>
-
-          {/* Sponsors Banner */}
-          <div className="absolute bottom-0 left-0 right-0 w-full bg-agno/95 backdrop-blur-sm py-2 sm:py-2.5 overflow-hidden">
-            <div className="absolute left-0 h-[calc(100%+1.25rem)] -top-2.5 w-12 sm:w-16 md:w-32 bg-gradient-to-r from-white/80 via-white/40 to-transparent z-10"></div>
-            <div className="absolute right-0 h-[calc(100%+1.25rem)] -top-2.5 w-12 sm:w-16 md:w-32 bg-gradient-to-l from-white/80 via-white/40 to-transparent z-10"></div>
-            <div className="max-w-[2400px] mx-auto relative overflow-hidden">
-              <div className="relative w-[200%] flex animate-scroll">
-                <div className="flex w-1/2 justify-around items-center px-6 sm:px-8 md:px-16 lg:px-24">
-                  <Image
-                    src="/logos/harvard.png"
-                    alt="Harvard Business Review"
-                    width={60}
-                    height={20}
-                    className="object-contain opacity-90 w-[45px] sm:w-[60px] md:w-[90px] h-auto"
-                  />
-                  <Image
-                    src="/logos/logocie.png"
-                    alt="CIE"
-                    width={60}
-                    height={20}
-                    className="object-contain opacity-90 w-[45px] sm:w-[60px] md:w-[90px] h-auto"
-                  />
+          <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-20 w-[600px]">
+            <div className="relative">
+              {/* Phone Frame */}
+              <div className="absolute inset-0 bg-[#1E1E1E] rounded-[60px] transform rotate-12 scale-90 translate-x-10 translate-y-10 shadow-2xl"></div>
+              {/* Phone Screen */}
+              <div className="relative bg-white rounded-[50px] overflow-hidden shadow-xl transform rotate-12">
+                <div className="w-[380px]">
+                  {/* Status Bar */}
+                  <div className="bg-white px-6 py-2 flex justify-between items-center">
+                    <span className="text-black text-sm">9:41</span>
+                    <div className="flex items-center gap-2">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                      </svg>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M2 22h20V2L2 22z" />
+                      </svg>
+                    </div>
+                  </div>
+                  {/* App Content */}
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-6">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M7 10l5 5 5-5H7z" />
+                        </svg>
+                      </div>
+                      <button className="bg-[#FF9500] text-white px-4 py-2 rounded-full text-sm">
+                        + Nouvelle carte
+                      </button>
+                    </div>
+                    <div className="bg-white rounded-xl shadow-sm p-4 mb-4">
+                      <div className="flex gap-4">
+                        <div className="relative w-16 h-16 overflow-hidden rounded-xl">
+                          <Image
+                            src="/phone-screens/phto.png"
+                            alt="Kouamé Serge"
+                            fill
+                            className="object-cover"
+                            sizes="64px"
+                            priority
+                          />
+                        </div>
+                        <div>
+                          <h3 className="font-medium">Kouamé serge</h3>
+                          <p className="text-gray-500 text-sm">Ingénieur</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-white p-4 rounded-xl shadow-sm">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-8 h-8 bg-[#FF9500]/10 rounded-lg flex items-center justify-center">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              stroke="#FF9500"
+                              fill="none"
+                            >
+                              <path
+                                d="M12 2L2 7l10 5 10-5-10-5z"
+                                strokeWidth="2"
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-sm text-gray-600">
+                            10 Cartes
+                          </span>
+                        </div>
+                      </div>
+                      <div className="bg-white p-4 rounded-xl shadow-sm">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-8 h-8 bg-[#FF9500]/10 rounded-lg flex items-center justify-center">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              stroke="#FF9500"
+                              fill="none"
+                            >
+                              <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+                                strokeWidth="2"
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-sm text-gray-600">
+                            2 Connaissances
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex w-1/2 justify-around items-center px-6 sm:px-8 md:px-16 lg:px-24">
-                  <Image
-                    src="/logos/harvard.png"
-                    alt="Harvard Business Review"
-                    width={60}
-                    height={20}
-                    className="object-contain opacity-90 w-[45px] sm:w-[60px] md:w-[90px] h-auto"
-                  />
-                  <Image
-                    src="/logos/logocie.png"
-                    alt="CIE"
-                    width={60}
-                    height={20}
-                    className="object-contain opacity-90 w-[45px] sm:w-[60px] md:w-[90px] h-auto"
-                  />
-                </div>
+              </div>
+              {/* Floating Elements */}
+              <div className="absolute top-10 right-20 bg-red-500 w-12 h-12 rounded-xl transform rotate-12 flex items-center justify-center text-white">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H5v-2h7v2zm7-4H5v-2h14v2zm0-4H5V7h14v2z" />
+                </svg>
+              </div>
+              <div className="absolute bottom-20 left-0 bg-[#FF9500] w-12 h-12 rounded-xl transform -rotate-12 flex items-center justify-center text-white">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z" />
+                </svg>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="relative py-12 sm:py-16 md:py-20">
-          <div className="agno-container relative">
-            <div className="inline-block bg-agno text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-              Agno
-            </div>
-            <p className="text-white text-base sm:text-lg md:text-xl max-w-xl mt-3 sm:mt-4">
-              Transformez votre Networking avec Agno
-            </p>
-          </div>
+        {/* Background Patterns */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('/pattern.svg')] opacity-10"></div>
         </div>
       </section>
 
@@ -373,6 +459,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
