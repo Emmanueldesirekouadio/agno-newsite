@@ -1,10 +1,6 @@
-import { Inter } from "next/font/google";
+"use client";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+import Sidebar from "@/components/dashboard/Sidebar";
 
 export default function DashboardLayout({
   children,
@@ -12,8 +8,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={inter.variable}>
-      <body className="min-h-screen flex flex-col antialiased">{children}</body>
-    </html>
+    <div className="flex h-screen">
+      <Sidebar />
+      <div className="flex-1 bg-[#FAFAFA] overflow-auto">
+        <main className="p-8">{children}</main>
+      </div>
+    </div>
   );
 }

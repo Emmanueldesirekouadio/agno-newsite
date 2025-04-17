@@ -1,5 +1,6 @@
 "use client";
 
+import { SignInButton, SignedOut, UserButton } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -43,8 +44,8 @@ export default function Header() {
             Fonctionnalités
           </Link>
           <Link
-            href="/connexion"
-            className={`${isActive("/connexion")} font-medium`}
+            href="/sign-up"
+            className={`${isActive("/sign-up")} font-medium`}
           >
             Espace Client
           </Link>
@@ -61,18 +62,20 @@ export default function Header() {
 
         {/* Action Buttons */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link
-            href="/connexion"
-            className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors"
-          >
-            <span>Connexion</span>
-          </Link>
-          <Link
-            href="/inscription"
-            className="flex items-center justify-center px-6 py-2 bg-agno text-white rounded-full font-semibold hover:bg-agno-dark transition-colors"
-          >
-            <span>Inscription</span>
-          </Link>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors">
+                <span>Connexion</span>
+              </button>
+            </SignInButton>
+            <Link
+              href="/creer-carte"
+              className="flex items-center justify-center px-6 py-2 bg-agno text-white rounded-full font-semibold hover:bg-agno-dark transition-colors"
+            >
+              <span>Créer une carte</span>
+            </Link>
+          </SignedOut>
+          <UserButton afterSignOutUrl="/" />
         </div>
 
         {/* Mobile Menu Button */}
@@ -105,8 +108,8 @@ export default function Header() {
               Fonctionnalités
             </Link>
             <Link
-              href="/connexion"
-              className={`${isActive("/connexion")} py-2 font-medium`}
+              href="/sign-up"
+              className={`${isActive("/sign-up")} py-2 font-medium`}
               onClick={() => setIsMenuOpen(false)}
             >
               Espace Client
@@ -127,20 +130,21 @@ export default function Header() {
             </Link>
 
             <div className="pt-4 flex flex-col space-y-3">
-              <Link
-                href="/connexion"
-                className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span>Connexion</span>
-              </Link>
-              <Link
-                href="/inscription"
-                className="flex items-center justify-center px-6 py-2 bg-agno text-white rounded-full font-semibold hover:bg-agno-dark transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span>Inscription</span>
-              </Link>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors">
+                    <span>Connexion</span>
+                  </button>
+                </SignInButton>
+                <Link
+                  href="/creer-carte"
+                  className="flex items-center justify-center px-6 py-2 bg-agno text-white rounded-full font-semibold hover:bg-agno-dark transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <span>Créer une carte</span>
+                </Link>
+              </SignedOut>
+              <UserButton afterSignOutUrl="/" />
             </div>
           </div>
         </div>

@@ -426,7 +426,7 @@ export default function CreerCartePage() {
             minutes
           </p>
           <Link
-            href="/inscription"
+            href="/sign-up"
             className="bg-white text-agno px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-colors"
           >
             Créer votre carte gratuitement

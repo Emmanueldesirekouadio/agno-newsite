@@ -1,0 +1,40 @@
+/* Styles spécifiques pour la page de connexion */
+.cl-formButtonPrimary {
+  text-transform: none !important;
+  font-weight: 500 !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+.cl-socialButtonsBlockButton {
+  text-transform: none !important;
+  font-weight: 500 !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+.cl-formFieldInput {
+  padding: 0.75rem 1.25rem !important;
+}
+
+.cl-socialButtonsBlockButtonText {
+  font-size: 0.875rem !important;
+}
+
+.cl-socialButtonsProviderIcon {
+  margin-right: 0.5rem !important;
+}
+
+.cl-card {
+  padding: 2rem !important;
+}
+
+.cl-formFieldLabel {
+  font-size: 0.875rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.cl-formHeaderTitle {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  margin-bottom: 1.5rem !important;
+}

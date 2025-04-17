@@ -148,7 +148,7 @@ export default function TarifsPage() {
                   </span>
                 </li>
               </ul>
-              <button className="agno-button-primary w-full">
+              <button className="w-full px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]">
                 Choisir ce plan
               </button>
             </div>
@@ -263,7 +263,7 @@ export default function TarifsPage() {
                   </span>
                 </li>
               </ul>
-              <button className="agno-button bg-white text-[#f7931e] hover:bg-white/90 w-full">
+              <button className="w-full px-6 py-3 bg-white text-[#FF9500] rounded-full font-medium transition-all duration-200 hover:bg-white/90 hover:shadow-md active:transform active:scale-[0.98]">
                 Choisir ce plan
               </button>
             </div>
@@ -375,7 +375,7 @@ export default function TarifsPage() {
                   </span>
                 </li>
               </ul>
-              <button className="agno-button-primary w-full">
+              <button className="w-full px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]">
                 Choisir ce plan
               </button>
             </div>
@@ -407,7 +407,7 @@ export default function TarifsPage() {
               sur votre premier mois avec le code promo AGNO20.
             </p>
             <Link
-              href="/inscription"
+              href="/sign-up"
               className="inline-block mt-6 text-[#e7302a] font-medium hover:text-[#cc0000]"
             >
               Obtenir la réduction
@@ -515,7 +515,7 @@ export default function TarifsPage() {
                   </p>
                   <Link
                     href="/commander"
-                    className="inline-block bg-[#f7931e] text-white px-6 py-2 rounded-full hover:bg-[#e07d0d] transition-colors"
+                    className="inline-block px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]"
                   >
                     Acheter
                   </Link>
@@ -564,7 +564,7 @@ export default function TarifsPage() {
                   </p>
                   <Link
                     href="/commander"
-                    className="inline-block bg-[#f7931e] text-white px-6 py-2 rounded-full hover:bg-[#e07d0d] transition-colors"
+                    className="inline-block px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]"
                   >
                     Acheter
                   </Link>
@@ -586,7 +586,7 @@ export default function TarifsPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link
-              href="/inscription"
+              href="/sign-up"
               className="bg-white text-agno agno-button hover:bg-gray-100 hover:text-agno-dark transition-colors"
             >
               Créer un compte
