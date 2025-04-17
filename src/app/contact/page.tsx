@@ -1,10 +1,8 @@
 "use client";
 
-import { addDoc, collection } from "firebase/firestore";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { db } from "../../../ firebase";
 
 type ContactFormData = {
   name: string;
@@ -48,15 +46,11 @@ export default function ContactPage() {
     setSubmitSuccess(false);
 
     try {
-      // Ajouter le message à la collection "contacts" dans Firestore
-      const contactsRef = collection(db, "contacts");
-      await addDoc(contactsRef, {
-        name: data.name,
-        email: data.email,
-        message: data.message,
-        timestamp: new Date(),
-        status: "non lu", // Statut pour suivre si le message a été lu
-      });
+      // Simuler un délai d'envoi
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // Simuler un succès (dans un cas réel, vous enverriez les données à un API)
+      console.log("Message envoyé:", data);
 
       // Réinitialiser le formulaire et afficher le message de succès
       reset();
@@ -105,7 +99,7 @@ export default function ContactPage() {
             <div className="flex justify-center">
               <button
                 onClick={() => setShowPopup(false)}
-                className="bg-agno text-white px-6 py-2 rounded-lg font-medium hover:bg-agno-dark transition-colors"
+                className="bg-[#FF9500] text-white px-6 py-2 rounded-full font-medium hover:bg-[#FF9500]/90 transition-all duration-200 hover:shadow-md active:transform active:scale-[0.98]"
               >
                 Fermer
               </button>
@@ -119,10 +113,10 @@ export default function ContactPage() {
         <div className="agno-container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span className="text-primary">Comment pouvons nous</span>
+              <span className="text-[#FF9500]">Comment pouvons nous</span>
             </h1>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-              <span className="bg-primary text-white px-6 sm:px-8 py-2 rounded-full inline-block">
+              <span className="bg-[#FF9500] text-white px-6 sm:px-8 py-2 rounded-full inline-block">
                 vous aider?
               </span>
             </h2>
@@ -136,14 +130,14 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-contrast">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
                 Informations de contact
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="mt-1 flex-shrink-0 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
                     <svg
-                      className="w-5 h-5 text-primary"
+                      className="w-5 h-5 text-[#FF9500]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -157,17 +151,17 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-contrast mb-1">
+                    <h3 className="font-semibold text-lg text-gray-800 mb-1">
                       Téléphone
                     </h3>
-                    <p className="text-muted">+225 0789637733</p>
+                    <p className="text-gray-600">+225 0789637733</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div className="mt-1 flex-shrink-0 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
                     <svg
-                      className="w-5 h-5 text-primary"
+                      className="w-5 h-5 text-[#FF9500]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -181,17 +175,17 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-contrast mb-1">
+                    <h3 className="font-semibold text-lg text-gray-800 mb-1">
                       Email
                     </h3>
-                    <p className="text-muted">contact@agno.com</p>
+                    <p className="text-gray-600">contact@agno.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div className="mt-1 flex-shrink-0 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
                     <svg
-                      className="w-5 h-5 text-primary"
+                      className="w-5 h-5 text-[#FF9500]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -211,10 +205,10 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-contrast mb-1">
+                    <h3 className="font-semibold text-lg text-gray-800 mb-1">
                       Adresse
                     </h3>
-                    <p className="text-muted">Abidjan, Côte d'Ivoire</p>
+                    <p className="text-gray-600">Abidjan, Côte d'Ivoire</p>
                   </div>
                 </div>
               </div>
@@ -222,7 +216,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-contrast mb-6">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
                 Envoyez-nous un message
               </h2>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -230,7 +224,7 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-contrast mb-2"
+                      className="block text-sm font-medium text-gray-700 mb-2"
                     >
                       Nom complet
                     </label>
@@ -240,7 +234,7 @@ export default function ContactPage() {
                       {...register("name", { required: "Le nom est requis" })}
                       className={`w-full px-4 py-3 rounded-lg border ${
                         errors.name ? "border-red-500" : "border-gray-300"
-                      } focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-base transition-colors`}
+                      } focus:outline-none focus:border-[#FF9500] focus:ring-1 focus:ring-[#FF9500] text-base transition-colors`}
                       placeholder="Votre nom"
                     />
                     {errors.name && (
@@ -252,7 +246,7 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-contrast mb-2"
+                      className="block text-sm font-medium text-gray-700 mb-2"
                     >
                       Email
                     </label>
@@ -268,7 +262,7 @@ export default function ContactPage() {
                       })}
                       className={`w-full px-4 py-3 rounded-lg border ${
                         errors.email ? "border-red-500" : "border-gray-300"
-                      } focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-base transition-colors`}
+                      } focus:outline-none focus:border-[#FF9500] focus:ring-1 focus:ring-[#FF9500] text-base transition-colors`}
                       placeholder="Votre email"
                     />
                     {errors.email && (
@@ -281,7 +275,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-contrast mb-2"
+                    className="block text-sm font-medium text-gray-700 mb-2"
                   >
                     Message
                   </label>
@@ -293,7 +287,7 @@ export default function ContactPage() {
                     rows={6}
                     className={`w-full px-4 py-3 rounded-lg border ${
                       errors.message ? "border-red-500" : "border-gray-300"
-                    } focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-base transition-colors resize-none`}
+                    } focus:outline-none focus:border-[#FF9500] focus:ring-1 focus:ring-[#FF9500] text-base transition-colors resize-none`}
                     placeholder="Votre message"
                   ></textarea>
                   {errors.message && (
@@ -359,15 +353,20 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="faq-section">
+          <div className="space-y-6">
             {/* Question 1 */}
-            <div className="faq-item" data-open={openQuestions.includes(0)}>
-              <button className="faq-button" onClick={() => toggleQuestion(0)}>
-                <h3 className="faq-question">
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                className="w-full flex justify-between items-center p-4 text-left"
+                onClick={() => toggleQuestion(0)}
+              >
+                <h3 className="text-lg font-medium text-gray-800">
                   Comment puis-je modifier mes informations sur ma carte ?
                 </h3>
                 <svg
-                  className="faq-icon"
+                  className={`w-5 h-5 text-gray-500 transition-transform ${
+                    openQuestions.includes(0) ? "transform rotate-180" : ""
+                  }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -380,21 +379,30 @@ export default function ContactPage() {
                   />
                 </svg>
               </button>
-              <div className="faq-answer">
-                Connectez-vous à votre compte Agno, accédez à la section "Mes
-                cartes" et cliquez sur "Modifier". Vous pourrez alors mettre à
-                jour toutes vos informations en temps réel.
-              </div>
+              {openQuestions.includes(0) && (
+                <div className="p-4 bg-gray-50 border-t border-gray-200">
+                  <p className="text-gray-600">
+                    Connectez-vous à votre compte Agno, accédez à la section
+                    "Mes cartes" et cliquez sur "Modifier". Vous pourrez alors
+                    mettre à jour toutes vos informations en temps réel.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Question 2 */}
-            <div className="faq-item" data-open={openQuestions.includes(1)}>
-              <button className="faq-button" onClick={() => toggleQuestion(1)}>
-                <h3 className="faq-question">
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                className="w-full flex justify-between items-center p-4 text-left"
+                onClick={() => toggleQuestion(1)}
+              >
+                <h3 className="text-lg font-medium text-gray-800">
                   Combien de temps prend la livraison de ma carte ?
                 </h3>
                 <svg
-                  className="faq-icon"
+                  className={`w-5 h-5 text-gray-500 transition-transform ${
+                    openQuestions.includes(1) ? "transform rotate-180" : ""
+                  }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -407,21 +415,30 @@ export default function ContactPage() {
                   />
                 </svg>
               </button>
-              <div className="faq-answer">
-                La livraison standard prend entre 3 à 5 jours ouvrés. Pour les
-                commandes urgentes, nous proposons une option de livraison
-                express sous 24-48h.
-              </div>
+              {openQuestions.includes(1) && (
+                <div className="p-4 bg-gray-50 border-t border-gray-200">
+                  <p className="text-gray-600">
+                    La livraison standard prend entre 3 à 5 jours ouvrés. Pour
+                    les commandes urgentes, nous proposons une option de
+                    livraison express sous 24-48h.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Question 3 */}
-            <div className="faq-item" data-open={openQuestions.includes(2)}>
-              <button className="faq-button" onClick={() => toggleQuestion(2)}>
-                <h3 className="faq-question">
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                className="w-full flex justify-between items-center p-4 text-left"
+                onClick={() => toggleQuestion(2)}
+              >
+                <h3 className="text-lg font-medium text-gray-800">
                   Puis-je commander des cartes en gros ?
                 </h3>
                 <svg
-                  className="faq-icon"
+                  className={`w-5 h-5 text-gray-500 transition-transform ${
+                    openQuestions.includes(2) ? "transform rotate-180" : ""
+                  }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -434,21 +451,30 @@ export default function ContactPage() {
                   />
                 </svg>
               </button>
-              <div className="faq-answer">
-                Oui, nous proposons des tarifs dégressifs pour les commandes en
-                volume. Contactez notre service commercial pour obtenir un devis
-                personnalisé.
-              </div>
+              {openQuestions.includes(2) && (
+                <div className="p-4 bg-gray-50 border-t border-gray-200">
+                  <p className="text-gray-600">
+                    Oui, nous proposons des tarifs dégressifs pour les commandes
+                    en volume. Contactez notre service commercial pour obtenir
+                    un devis personnalisé.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Question 4 */}
-            <div className="faq-item" data-open={openQuestions.includes(3)}>
-              <button className="faq-button" onClick={() => toggleQuestion(3)}>
-                <h3 className="faq-question">
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                className="w-full flex justify-between items-center p-4 text-left"
+                onClick={() => toggleQuestion(3)}
+              >
+                <h3 className="text-lg font-medium text-gray-800">
                   Y a-t-il des frais cachés avec Agno ?
                 </h3>
                 <svg
-                  className="faq-icon"
+                  className={`w-5 h-5 text-gray-500 transition-transform ${
+                    openQuestions.includes(3) ? "transform rotate-180" : ""
+                  }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -461,17 +487,21 @@ export default function ContactPage() {
                   />
                 </svg>
               </button>
-              <div className="faq-answer">
-                Non, tous nos prix sont transparents et incluent la TVA. Il n'y
-                a aucun frais caché ni abonnement obligatoire.
-              </div>
+              {openQuestions.includes(3) && (
+                <div className="p-4 bg-gray-50 border-t border-gray-200">
+                  <p className="text-gray-600">
+                    Non, tous nos prix sont transparents et incluent la TVA. Il
+                    n'y a aucun frais caché ni abonnement obligatoire.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-agno py-16 text-white">
+      <section className="bg-[#FF9500] py-16 text-white">
         <div className="agno-container text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Prêt à commencer ?
@@ -482,7 +512,7 @@ export default function ContactPage() {
           </p>
           <Link
             href="/sign-up"
-            className="bg-white text-agno px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-colors"
+            className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-all duration-200 hover:shadow-md active:transform active:scale-[0.98]"
           >
             Créer votre carte gratuitement
           </Link>
