@@ -1,15 +1,20 @@
 "use client";
 
-import { SignInButton, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleCreateCard = () => {
+    router.push("/dashboard/create-card");
+  };
 
   const isActive = (path: string) => {
     return pathname === path ? "text-agno" : "text-gray-800";
@@ -43,12 +48,22 @@ export default function Header() {
           >
             Fonctionnalités
           </Link>
-          <Link
-            href="/sign-up"
-            className={`${isActive("/sign-up")} font-medium`}
-          >
-            Espace Client
-          </Link>
+          <SignedIn>
+            <Link
+              href="/dashboard"
+              className={`${isActive("/dashboard")} font-medium`}
+            >
+              Espace Client
+            </Link>
+          </SignedIn>
+          <SignedOut>
+            <Link
+              href="/sign-in"
+              className={`${isActive("/dashboard")} font-medium`}
+            >
+              Espace Client
+            </Link>
+          </SignedOut>
           <Link href="/tarifs" className={`${isActive("/tarifs")} font-medium`}>
             Tarifs
           </Link>
@@ -63,18 +78,21 @@ export default function Header() {
         {/* Action Buttons */}
         <div className="hidden md:flex items-center space-x-4">
           <SignedOut>
-            <SignInButton mode="modal">
-              <button className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors">
-                <span>Connexion</span>
-              </button>
-            </SignInButton>
             <Link
-              href="/creer-carte"
+              href="/sign-in"
+              className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors"
+            >
+              <span>Connexion</span>
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <button
+              onClick={handleCreateCard}
               className="flex items-center justify-center px-6 py-2 bg-agno text-white rounded-full font-semibold hover:bg-agno-dark transition-colors"
             >
               <span>Créer une carte</span>
-            </Link>
-          </SignedOut>
+            </button>
+          </SignedIn>
           <UserButton afterSignOutUrl="/" />
         </div>
 
@@ -107,13 +125,24 @@ export default function Header() {
             >
               Fonctionnalités
             </Link>
-            <Link
-              href="/sign-up"
-              className={`${isActive("/sign-up")} py-2 font-medium`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Espace Client
-            </Link>
+            <SignedIn>
+              <Link
+                href="/dashboard"
+                className={`${isActive("/dashboard")} py-2 font-medium`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Espace Client
+              </Link>
+            </SignedIn>
+            <SignedOut>
+              <Link
+                href="/sign-in"
+                className={`${isActive("/dashboard")} py-2 font-medium`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Espace Client
+              </Link>
+            </SignedOut>
             <Link
               href="/tarifs"
               className={`${isActive("/tarifs")} py-2 font-medium`}
@@ -131,19 +160,21 @@ export default function Header() {
 
             <div className="pt-4 flex flex-col space-y-3">
               <SignedOut>
-                <SignInButton mode="modal">
-                  <button className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors">
-                    <span>Connexion</span>
-                  </button>
-                </SignInButton>
                 <Link
-                  href="/creer-carte"
-                  className="flex items-center justify-center px-6 py-2 bg-agno text-white rounded-full font-semibold hover:bg-agno-dark transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                  href="/sign-in"
+                  className="flex items-center justify-center px-6 py-2 border border-agno text-agno rounded-full font-semibold hover:bg-agno/10 transition-colors"
                 >
-                  <span>Créer une carte</span>
+                  <span>Connexion</span>
                 </Link>
               </SignedOut>
+              <SignedIn>
+                <button
+                  onClick={handleCreateCard}
+                  className="flex items-center justify-center px-6 py-2 bg-agno text-white rounded-full font-semibold hover:bg-agno-dark transition-colors"
+                >
+                  <span>Créer une carte</span>
+                </button>
+              </SignedIn>
               <UserButton afterSignOutUrl="/" />
             </div>
           </div>

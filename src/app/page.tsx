@@ -1,6 +1,7 @@
 "use client";
 
 import { HoverEffect } from "@/components/ui/hover-effect";
+import { SignInButton, SignedIn, SignedOut, useAuth } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import {
   Clock,
@@ -12,6 +13,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export const projects = [
   {
@@ -32,6 +34,9 @@ export const projects = [
 ] as const;
 
 export default function Home() {
+  const { isSignedIn } = useAuth();
+  const router = useRouter();
+
   return (
     <main>
       {/* Hero Section */}
@@ -66,28 +71,57 @@ export default function Home() {
               avec Agno
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/creer-carte"
-                className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2"
-              >
-                Commencer
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  className="transform translate-x-1"
+              <SignedIn>
+                <Link
+                  href="/dashboard/create-card"
+                  className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2"
                 >
-                  <path
-                    d="M5 12H19M19 12L12 5M19 12L12 19"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
-              <button className="text-white border-2 border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:bg-opacity-10 transition-all flex items-center gap-2">
+                  Commencer
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    className="transform translate-x-1"
+                  >
+                    <path
+                      d="M5 12H19M19 12L12 5M19 12L12 19"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+              </SignedIn>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2">
+                    Commencer
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      className="transform translate-x-1"
+                    >
+                      <path
+                        d="M5 12H19M19 12L12 5M19 12L12 19"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </SignInButton>
+              </SignedOut>
+              <Link
+                href="https://play.google.com/store/apps/details?id=com.agnoapp&hl=fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white border-2 border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:bg-opacity-10 transition-all flex items-center gap-2"
+              >
                 <svg
                   width="20"
                   height="20"
@@ -114,8 +148,8 @@ export default function Home() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                Télécharger l'application
-              </button>
+                Télécharger l&apos;application
+              </Link>
             </div>
           </div>
           <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-20 w-[600px]">
@@ -450,6 +484,21 @@ export default function Home() {
             >
               Créer votre carte gratuitement
             </Link>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="border border-white text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium hover:bg-white/10 transition-colors text-sm sm:text-base">
+                  Espace client
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <Link
+                href="/dashboard"
+                className="border border-white text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium hover:bg-white/10 transition-colors text-sm sm:text-base"
+              >
+                Espace client
+              </Link>
+            </SignedIn>
             <Link
               href="/decouvrir"
               className="border border-white text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium hover:bg-white/10 transition-colors text-sm sm:text-base"

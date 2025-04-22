@@ -1,5 +1,3 @@
-"use client";
-
 import FooterWrapper from "@/components/FooterWrapper";
 import HeaderWrapper from "@/components/HeaderWrapper";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -12,20 +10,29 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+export const metadata = {
+  title: "Agno - Vos cartes de visite digitales",
+  description:
+    "Des solutions innovantes pour créer et partager vos cartes de visite, facilement et efficacement.",
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="fr" className={inter.variable}>
-        <body className="min-h-screen antialiased">
+    <html lang="fr" className={inter.variable} suppressHydrationWarning>
+      <body
+        className="min-h-screen antialiased"
+        suppressHydrationWarning={true}
+      >
+        <ClerkProvider>
           <HeaderWrapper />
           {children}
           <FooterWrapper />
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

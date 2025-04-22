@@ -1,11 +1,53 @@
 "use client";
 
 import { useClerk } from "@clerk/nextjs";
-import Image from "next/image";
+import {
+  CreditCard,
+  Home,
+  LogOut,
+  Package,
+  Settings,
+  Share2,
+  User,
+} from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
+const menuItems = [
+  {
+    name: "Tableau de bord",
+    icon: Home,
+    path: "/dashboard",
+  },
+  {
+    name: "Gestion de carte",
+    icon: CreditCard,
+    path: "/dashboard/create-card",
+  },
+  {
+    name: "Commandes",
+    icon: Package,
+    path: "/dashboard/orders",
+  },
+  {
+    name: "Partage",
+    icon: Share2,
+    path: "/dashboard/share",
+  },
+  {
+    name: "Profil",
+    icon: User,
+    path: "/dashboard/profile",
+  },
+  {
+    name: "Paramètres",
+    icon: Settings,
+    path: "/dashboard/settings",
+  },
+];
 
 export default function Sidebar() {
+  const pathname = usePathname();
   const { signOut } = useClerk();
   const router = useRouter();
 
@@ -14,125 +56,42 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-[240px] bg-[#FFF9E5] py-6 flex flex-col h-screen">
-      <div className="px-6 mb-8">
-        <Image src="/logoagno.png" alt="AGNO" width={100} height={40} />
+    <div className="w-64 bg-white border-r h-screen flex flex-col">
+      <div className="p-4">
+        <Link href="/" className="flex items-center gap-2 mb-8">
+          <img src="/logoagno.png" alt="Logo" className="h-8" />
+        </Link>
+
+        <nav className="space-y-1">
+          {menuItems.map((item) => {
+            const isActive = pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                  isActive
+                    ? "bg-[#FF9500] text-white"
+                    : "text-gray-600 hover:bg-gray-100"
+                }`}
+              >
+                <item.icon size={20} />
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
+        </nav>
       </div>
 
-      <nav className="flex-1 px-3 space-y-2">
-        <Link
-          href="/dashboard"
-          className="flex items-center gap-3 px-4 py-3 text-[#FF9500] bg-white rounded-lg"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M9 22V12h6v10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Accueil
-        </Link>
-
-        <Link
-          href="/dashboard/gestion"
-          className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-white/60 rounded-lg"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path d="M14 2v6h6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Gestion de carte
-        </Link>
-
-        <Link
-          href="/dashboard/commande"
-          className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-white/60 rounded-lg"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              d="M9 17h6M9 13h6M9 9h6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Commande
-        </Link>
-
-        <Link
-          href="/dashboard/partage"
-          className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-white/60 rounded-lg"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4-4m0 0l-4 4m4-4v13"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Partage
-        </Link>
-      </nav>
-
-      <div className="px-3 mt-auto">
+      <div className="mt-auto p-4">
         <button
           onClick={handleSignOut}
-          className="flex w-full items-center gap-3 px-4 py-3 text-gray-600 hover:bg-white/60 rounded-lg"
+          className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 w-full"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Déconnexion
+          <LogOut size={20} />
+          <span>Déconnexion</span>
         </button>
       </div>
-    </aside>
+    </div>
   );
 }
