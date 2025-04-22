@@ -7,6 +7,7 @@ import { EditProfileDialog } from "@/components/dialogs/EditProfileDialog";
 import { LanguageDialog } from "@/components/dialogs/LanguageDialog";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { Globe, Key, Mail, Trash2, User } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function SettingsPage() {
@@ -47,12 +48,26 @@ export default function SettingsPage() {
         {/* Profil */}
         <div className="bg-white rounded-xl shadow-sm p-6">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-20 h-20 rounded-full bg-gray-200 overflow-hidden">
-              <img
-                src={user?.imageUrl}
-                alt={user?.fullName || "Photo de profil"}
-                className="w-full h-full object-cover"
-              />
+            <div className="w-20 h-20 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center">
+              {user?.imageUrl ? (
+                <Image
+                  src={user.imageUrl}
+                  alt={user?.fullName || "Photo de profil"}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-[#FF9500] flex items-center justify-center">
+                  <Image
+                    src="/logoagno.png"
+                    alt="Agno Logo"
+                    width={40}
+                    height={40}
+                    className="opacity-80"
+                  />
+                </div>
+              )}
             </div>
             <div>
               <h2 className="text-xl font-semibold">{user?.fullName}</h2>
