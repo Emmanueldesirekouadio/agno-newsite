@@ -16,12 +16,46 @@ export default function SharePage() {
       await navigator.clipboard.writeText(shareUrl);
       setShowCopied(true);
       setTimeout(() => setShowCopied(false), 2000);
-    } catch (error) {
-      console.error("Failed to copy:", error);
+    } catch (err: unknown) {
+      console.error("Failed to copy:", err);
     }
   };
 
-  const socialShare = {
+  const downloadQRCode = () => {
+    const qrCodeSvg = document.querySelector(".qr-code-svg");
+    if (!qrCodeSvg) return;
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = 1000;
+    canvas.height = 1000;
+
+    const img = new Image();
+    const svgData = new XMLSerializer().serializeToString(qrCodeSvg);
+    const svgBlob = new Blob([svgData], {
+      type: "image/svg+xml;charset=utf-8",
+    });
+    const url = URL.createObjectURL(svgBlob);
+
+    img.onload = () => {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      const link = document.createElement("a");
+      link.download = `agno-qr-code-${new Date().getTime()}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+
+      URL.revokeObjectURL(url);
+    };
+
+    img.src = url;
+  };
+
+  const socialShareUrls = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
       shareUrl
     )}`,
@@ -44,17 +78,9 @@ export default function SharePage() {
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-xl font-semibold mb-4">QR Code</h2>
           <div className="flex flex-col items-center gap-4">
-            <QRCodeSVG value={shareUrl} size={200} />
+            <QRCodeSVG value={shareUrl} size={200} className="qr-code-svg" />
             <button
-              onClick={() => {
-                const canvas = document.querySelector("canvas");
-                if (canvas) {
-                  const link = document.createElement("a");
-                  link.download = "qr-code.png";
-                  link.href = canvas.toDataURL();
-                  link.click();
-                }
-              }}
+              onClick={downloadQRCode}
               className="px-4 py-2 bg-[#FF9500] text-white rounded-lg hover:bg-[#FF9500]/90"
             >
               Télécharger
@@ -84,7 +110,7 @@ export default function SharePage() {
               <h3 className="font-medium mb-3">Partager sur les réseaux</h3>
               <div className="flex gap-3">
                 <a
-                  href={socialShare.facebook}
+                  href={socialShareUrls.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -92,7 +118,7 @@ export default function SharePage() {
                   <Facebook size={24} />
                 </a>
                 <a
-                  href={socialShare.twitter}
+                  href={socialShareUrls.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600"
@@ -100,7 +126,7 @@ export default function SharePage() {
                   <Twitter size={24} />
                 </a>
                 <a
-                  href={socialShare.linkedin}
+                  href={socialShareUrls.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800"
@@ -108,7 +134,7 @@ export default function SharePage() {
                   <Linkedin size={24} />
                 </a>
                 <a
-                  href={socialShare.email}
+                  href={socialShareUrls.email}
                   className="p-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
                 >
                   <Mail size={24} />

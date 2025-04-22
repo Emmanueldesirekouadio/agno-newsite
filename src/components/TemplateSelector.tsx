@@ -12,7 +12,7 @@ export interface Template {
 const DEFAULT_TEMPLATES: Template[] = [
   {
     id: "modern",
-    name: "Modern",
+    name: "Moderne",
     colors: {
       primary: "#2563eb",
       secondary: "#1e40af",
@@ -22,7 +22,7 @@ const DEFAULT_TEMPLATES: Template[] = [
   },
   {
     id: "minimal",
-    name: "Minimal",
+    name: "Minimaliste",
     colors: {
       primary: "#18181b",
       secondary: "#27272a",
@@ -32,7 +32,7 @@ const DEFAULT_TEMPLATES: Template[] = [
   },
   {
     id: "bold",
-    name: "Bold",
+    name: "Audacieux",
     colors: {
       primary: "#dc2626",
       secondary: "#991b1b",

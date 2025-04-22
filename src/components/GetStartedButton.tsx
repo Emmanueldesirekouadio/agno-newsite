@@ -2,27 +2,21 @@
 
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
-interface GetStartedButtonProps {
-  className?: string;
-}
-
-export default function GetStartedButton({ className }: GetStartedButtonProps) {
+export default function GetStartedButton() {
   const router = useRouter();
 
   return (
     <>
       <SignedIn>
-        <button
-          onClick={() => router.push("/dashboard/create-card")}
-          className={className}
-        >
-          Commencer
-        </button>
+        <Button onClick={() => router.push("/dashboard")}>
+          Accéder au tableau de bord
+        </Button>
       </SignedIn>
       <SignedOut>
         <SignInButton mode="modal">
-          <button className={className}>Commencer</button>
+          <Button>Commencer</Button>
         </SignInButton>
       </SignedOut>
     </>

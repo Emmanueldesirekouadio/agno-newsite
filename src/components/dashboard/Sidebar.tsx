@@ -1,5 +1,7 @@
 "use client";
 
+import { sidebarLinks } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import { useClerk } from "@clerk/nextjs";
 import {
   CreditCard,
@@ -10,6 +12,7 @@ import {
   Share2,
   User,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -46,7 +49,11 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname();
   const { signOut } = useClerk();
   const router = useRouter();
@@ -56,42 +63,50 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="w-64 bg-white border-r h-screen flex flex-col">
-      <div className="p-4">
-        <Link href="/" className="flex items-center gap-2 mb-8">
-          <img src="/logoagno.png" alt="Logo" className="h-8" />
-        </Link>
-
-        <nav className="space-y-1">
-          {menuItems.map((item) => {
-            const isActive = pathname === item.path;
-            return (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive
-                    ? "bg-[#FF9500] text-white"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-              >
-                <item.icon size={20} />
-                <span>{item.name}</span>
-              </Link>
-            );
-          })}
-        </nav>
+    <div className="flex h-full w-full flex-col bg-white p-3 sm:p-5">
+      {/* Logo */}
+      <div className="flex items-center gap-2">
+        <Image
+          src="/logoagno.png"
+          alt="Agno Logo"
+          width={28}
+          height={28}
+          className="rounded-lg sm:w-8 sm:h-8"
+        />
+        <span className="text-lg sm:text-xl font-bold">Agno</span>
       </div>
 
-      <div className="mt-auto p-4">
-        <button
-          onClick={handleSignOut}
-          className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 w-full"
-        >
-          <LogOut size={20} />
-          <span>Déconnexion</span>
-        </button>
-      </div>
+      {/* Navigation Links */}
+      <nav className="mt-6 sm:mt-8 flex flex-1 flex-col gap-1.5 sm:gap-2">
+        {sidebarLinks.map((link) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={onClose}
+              className={cn(
+                "flex items-center gap-2 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors",
+                isActive
+                  ? "bg-slate-100 text-slate-900"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+              )}
+            >
+              <link.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              {link.label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Logout Button */}
+      <button
+        onClick={handleSignOut}
+        className="mt-auto flex items-center gap-2 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
+      >
+        <LogOut className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+        Déconnexion
+      </button>
     </div>
   );
 }
