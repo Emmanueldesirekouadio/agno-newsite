@@ -10,8 +10,9 @@
     "format": "bunx biome format --write"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.30.0",
     "@clerk/elements": "^0.23.15",
-    "@clerk/nextjs": "^6.17.0",
+    "@clerk/nextjs": "^6.18.0",
     "@prisma/client": "^6.6.0",
     "@radix-ui/react-accordion": "^1.2.4",
     "@radix-ui/react-dialog": "^1.1.10",

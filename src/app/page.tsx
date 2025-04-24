@@ -1,7 +1,8 @@
 "use client";
 
 import { HoverEffect } from "@/components/ui/hover-effect";
-import { SignInButton, SignedIn, SignedOut, useAuth } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import { useUser } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import {
   Clock,
@@ -34,7 +35,7 @@ export const projects = [
 ] as const;
 
 export default function Home() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn } = useUser();
   const router = useRouter();
 
   return (
