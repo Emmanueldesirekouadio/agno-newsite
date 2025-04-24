@@ -57,33 +57,33 @@ export default function PaymentOptions({
   );
 
   return (
-    <div className="space-y-6">
-      <h3 className="text-xl font-semibold mb-6">
+    <div className="space-y-4">
+      <h3 className="text-lg font-semibold mb-4">
         Choisissez votre mode de paiement
       </h3>
       <div className="grid gap-4">
         {availableMethods.map((method) => (
           <button
             key={method.type}
-            className="flex items-center p-4 sm:p-6 border rounded-xl hover:border-blue-500 hover:shadow-md transition-all bg-white"
+            className="flex items-center p-4 border rounded-lg hover:border-blue-500 transition-colors"
             onClick={() =>
               onSelect({ type: method.type, amount, currency: currency as any })
             }
           >
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 mr-4 sm:mr-6">
+            <div className="w-12 h-12 relative mr-4">
               <Image
                 src={method.icon}
                 alt={method.name}
                 fill
-                className="object-contain rounded-lg"
+                className="object-contain"
               />
             </div>
             <div className="flex-1 text-left">
-              <h4 className="font-medium text-gray-900">{method.name}</h4>
-              <p className="text-sm text-gray-600 mt-1">{method.description}</p>
+              <h4 className="font-medium">{method.name}</h4>
+              <p className="text-sm text-gray-600">{method.description}</p>
             </div>
-            <div className="text-right flex-shrink-0 ml-4">
-              <span className="font-medium text-gray-900 whitespace-nowrap">
+            <div className="text-right">
+              <span className="font-medium">
                 {amount.toLocaleString()} {currency}
               </span>
             </div>

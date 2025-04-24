@@ -81,15 +81,15 @@ export default function CreateCardPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div className="max-w-4xl mx-auto p-6">
       {/* Progress Steps */}
       <div className="mb-8">
         <div className="flex justify-between items-center">
           {steps.map((step, index) => (
-            <div key={step} className="flex items-center flex-1">
+            <div key={step} className="flex items-center">
               <div
                 className={`
-                w-8 h-8 rounded-full flex items-center justify-center text-sm
+                w-8 h-8 rounded-full flex items-center justify-center
                 ${
                   index <= currentStep
                     ? "bg-blue-600 text-white"
@@ -110,7 +110,7 @@ export default function CreateCardPage() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-3 text-sm font-medium text-gray-600">
+        <div className="text-center mt-2 text-sm text-gray-600">
           {steps[currentStep]}
         </div>
       </div>
@@ -121,23 +121,29 @@ export default function CreateCardPage() {
         </div>
       )}
 
-      <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 lg:p-8">
+      <div className="bg-white rounded-lg shadow p-6">
         {currentStep === 0 && (
           <div>
-            <h2 className="text-xl font-semibold mb-6">Choisir un modèle</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <CardTemplateList
-                selectedId={selectedTemplate?.id}
-                onSelect={handleTemplateSelect}
-              />
-            </div>
+            <h2 className="text-xl font-semibold mb-4">Choisir un modèle</h2>
+            <CardTemplateList
+              selectedId={selectedTemplate?.id}
+              onSelect={handleTemplateSelect}
+            />
           </div>
         )}
 
+        {currentStep === 4 && selectedTemplate && (
+          <PaymentOptions
+            onSelect={handlePaymentSelect}
+            amount={selectedTemplate.price.amount}
+            currency={selectedTemplate.price.currency}
+          />
+        )}
+
         {currentStep === 1 && (
-          <div className="space-y-6">
-            <h2 className="text-xl font-semibold mb-6">Informations</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold mb-4">Informations</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 type="text"
                 placeholder="Nom complet"
@@ -145,7 +151,7 @@ export default function CreateCardPage() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, name: e.target.value }))
                 }
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                className="rounded-md border border-gray-300 px-4 py-2"
               />
               <input
                 type="text"
@@ -154,7 +160,7 @@ export default function CreateCardPage() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, title: e.target.value }))
                 }
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                className="rounded-md border border-gray-300 px-4 py-2"
               />
               <input
                 type="text"
@@ -163,7 +169,7 @@ export default function CreateCardPage() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, company: e.target.value }))
                 }
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                className="rounded-md border border-gray-300 px-4 py-2"
               />
               <input
                 type="email"
@@ -172,7 +178,7 @@ export default function CreateCardPage() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, email: e.target.value }))
                 }
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                className="rounded-md border border-gray-300 px-4 py-2"
               />
               <input
                 type="tel"
@@ -181,7 +187,7 @@ export default function CreateCardPage() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, phone: e.target.value }))
                 }
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                className="rounded-md border border-gray-300 px-4 py-2"
               />
               <input
                 type="url"
@@ -190,7 +196,7 @@ export default function CreateCardPage() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, website: e.target.value }))
                 }
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                className="rounded-md border border-gray-300 px-4 py-2"
               />
             </div>
           </div>
@@ -198,8 +204,8 @@ export default function CreateCardPage() {
 
         {currentStep === 2 && (
           <div>
-            <h2 className="text-xl font-semibold mb-6">Design</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 className="text-xl font-semibold mb-4">Design</h2>
+            <div className="space-y-4">
               <ColorPicker
                 label="Couleur principale"
                 value={formData.theme.primaryColor}
@@ -236,33 +242,29 @@ export default function CreateCardPage() {
 
         {currentStep === 3 && (
           <div>
-            <h2 className="text-xl font-semibold mb-6">Aperçu</h2>
+            <h2 className="text-xl font-semibold mb-4">Aperçu</h2>
             <div className="flex flex-col items-center space-y-6">
               <div
                 id="card-preview"
-                className="w-full max-w-md aspect-[1.586] relative rounded-xl overflow-hidden shadow-lg"
+                className="w-full max-w-md aspect-[1.586] relative rounded-lg overflow-hidden shadow-lg"
                 style={{
                   backgroundColor: formData.theme.backgroundColor,
                   color: formData.theme.textColor,
                 }}
               >
                 <div className="p-6">
-                  <div className="flex justify-between items-start">
-                    <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <div>
                       <h3
                         className="text-2xl font-bold"
                         style={{ color: formData.theme.primaryColor }}
                       >
-                        {formData.name || "Votre Nom"}
+                        {formData.name}
                       </h3>
-                      <p className="text-sm opacity-90">
-                        {formData.title || "Titre"}
-                      </p>
-                      <p className="text-sm opacity-90">
-                        {formData.company || "Entreprise"}
-                      </p>
+                      <p className="text-sm mt-1">{formData.title}</p>
+                      <p className="text-sm">{formData.company}</p>
                     </div>
-                    <div className="bg-white p-2 rounded-lg shadow-sm">
+                    <div className="bg-white p-2 rounded">
                       <QRCodeSVG
                         value={`${window.location.origin}/cards/${user?.id}`}
                         size={80}
@@ -271,33 +273,29 @@ export default function CreateCardPage() {
                     </div>
                   </div>
                   <div className="mt-6 space-y-2">
-                    {formData.email && (
-                      <p className="flex items-center gap-2 text-sm">
-                        <svg
-                          className="w-4 h-4"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                        </svg>
-                        {formData.email}
-                      </p>
-                    )}
-                    {formData.phone && (
-                      <p className="flex items-center gap-2 text-sm">
-                        <svg
-                          className="w-4 h-4"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                        </svg>
-                        {formData.phone}
-                      </p>
-                    )}
+                    <p className="flex items-center gap-2">
+                      <svg
+                        className="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                      {formData.email}
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <svg
+                        className="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                      </svg>
+                      {formData.phone}
+                    </p>
                     {formData.website && (
-                      <p className="flex items-center gap-2 text-sm">
+                      <p className="flex items-center gap-2">
                         <svg
                           className="w-4 h-4"
                           fill="currentColor"
@@ -318,21 +316,13 @@ export default function CreateCardPage() {
             </div>
           </div>
         )}
-
-        {currentStep === 4 && selectedTemplate && (
-          <PaymentOptions
-            onSelect={handlePaymentSelect}
-            amount={selectedTemplate.price.amount}
-            currency={selectedTemplate.price.currency}
-          />
-        )}
       </div>
 
-      <div className="mt-8 flex justify-between items-center">
+      <div className="mt-6 flex justify-between">
         {currentStep > 0 && (
           <button
             onClick={handleBack}
-            className="px-6 py-2.5 text-sm font-medium text-gray-700 hover:text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+            className="px-4 py-2 bg-gray-100 rounded hover:bg-gray-200"
           >
             Retour
           </button>
@@ -340,12 +330,7 @@ export default function CreateCardPage() {
         <button
           onClick={handleNext}
           disabled={currentStep === 0 && !selectedTemplate}
-          className={`px-6 py-2.5 text-sm font-medium text-white rounded-lg transition-colors
-            ${
-              currentStep === steps.length - 1
-                ? "bg-green-600 hover:bg-green-700"
-                : "bg-blue-600 hover:bg-blue-700"
-            } disabled:opacity-50 disabled:cursor-not-allowed ml-auto`}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {currentStep === steps.length - 1 ? "Terminer" : "Suivant"}
         </button>
