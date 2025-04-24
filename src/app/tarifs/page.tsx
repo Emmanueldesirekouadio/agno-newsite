@@ -1,11 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function TarifsPage() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="w-full max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col min-h-screen w-full">
+      {/* Hero Section - Optimisé pour grand écran */}
+      <section className="w-full bg-white py-12 lg:py-16">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-gray-600 text-lg mb-4">Nos tarifs</p>
             <div className="text-4xl md:text-5xl lg:text-6xl font-bold">
@@ -20,553 +21,496 @@ export default function TarifsPage() {
               </h2>
             </div>
             <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto mt-8">
-              Découvrez nos différentes options de tarification conçues pour
-              répondre à tous vos besoins professionnels.
+              Des solutions adaptées à tous les besoins, de l'entrepreneur
+              individuel aux grandes entreprises.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Pricing Plans Section */}
-      <section className="section-padding bg-gradient-to-br from-orange-50 to-orange-100">
-        <div className="agno-container">
+      {/* Pricing Plans Section - Refait avec des caractéristiques uniques */}
+      <section className="w-full bg-gradient-to-br from-orange-50 to-orange-100 py-16">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-contrast">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
               Plans Disponibles
             </h2>
-            <p className="text-muted text-lg">
-              Nous avons un plan adapté à votre situation.
+            <p className="text-gray-600 text-lg">
+              Chaque plan est conçu pour répondre à des besoins spécifiques
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Basique Plan */}
-            <div className="agno-card bg-white p-6 sm:p-8 hover-lift">
-              <h3 className="text-xl font-bold mb-2 text-contrast">Basique</h3>
-              <p className="text-muted text-sm mb-6">
-                Une carte de visite connectée complète et prête à l'emploi, sans
-                abonnement.
-              </p>
-              <div className="text-3xl font-bold mb-8 text-contrast">
-                2500 Fcfa
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/* Plan Basique - Caractéristiques uniques */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+              <div className="flex flex-col h-full">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900">
+                    Basique
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    Pour démarrer votre présence digitale
+                  </p>
+                  <div className="text-3xl font-bold mb-6 text-gray-900">
+                    2000 <span className="text-lg">FCFA</span>
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>1 carte de visite connectée</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Profil digital basique</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Partage via QR code</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Support par email</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Statistiques mensuelles</span>
+                    </li>
+                  </ul>
+                </div>
+                <Link
+                  href="/sign-in?redirect=/dashboard/create-card"
+                  className="block w-full px-6 py-3 text-center bg-[#FF9500] text-white rounded-full font-medium hover:bg-[#FF9500]/90 transition-colors"
+                >
+                  Commencer
+                </Link>
               </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">Carte de visite connectée</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">
-                    Profil digital personnalisable
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">
-                    Mise à jour illimitée des informations
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">Collecte des leads</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">
-                    Gestion d'équipe centralisée
-                  </span>
-                </li>
-              </ul>
-              <button className="w-full px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]">
-                Choisir ce plan
-              </button>
             </div>
 
-            {/* Standard Plan */}
-            <div className="agno-card bg-[#f7931e] p-6 sm:p-8 hover-lift transform scale-105">
-              <h3 className="text-xl font-bold mb-2 text-white">Standard</h3>
-              <p className="text-white/90 text-sm mb-6">
-                Expérimenter le pouvoir des possibilités infinies
-              </p>
-              <div className="text-3xl font-bold mb-4 text-white">
-                4500 Fcfa
+            {/* Plan Standard - Mise en avant */}
+            <div className="bg-[#f7931e] rounded-2xl shadow-lg p-8 transform scale-105 relative">
+              <div className="absolute top-0 right-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-tr-2xl rounded-bl-2xl">
+                POPULAIRE
               </div>
-              <div className="inline-block bg-white/20 text-white rounded-full px-4 py-1 text-sm mb-8">
-                Économisez 50%
+              <div className="flex flex-col h-full">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-white">
+                    Standard
+                  </h3>
+                  <p className="text-white/90 mb-6">
+                    Pour les professionnels ambitieux
+                  </p>
+                  <div className="text-3xl font-bold mb-6 text-white">
+                    5000 <span className="text-lg">FCFA</span>
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-start text-white">
+                      <svg
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>3 cartes de visite connectées</span>
+                    </li>
+                    <li className="flex items-start text-white">
+                      <svg
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Profil digital personnalisable</span>
+                    </li>
+                    <li className="flex items-start text-white">
+                      <svg
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Partage NFC + QR code</span>
+                    </li>
+                    <li className="flex items-start text-white">
+                      <svg
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Support prioritaire</span>
+                    </li>
+                    <li className="flex items-start text-white">
+                      <svg
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Statistiques en temps réel</span>
+                    </li>
+                    <li className="flex items-start text-white">
+                      <svg
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Gestion des leads</span>
+                    </li>
+                  </ul>
+                </div>
+                <Link
+                  href="/sign-in?redirect=/dashboard/create-card"
+                  className="block w-full px-6 py-3 text-center bg-white text-[#f7931e] rounded-full font-medium hover:bg-gray-50 transition-colors"
+                >
+                  Commencer
+                </Link>
               </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-white">Carte de visite connectée</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-white">
-                    Profil digital personnalisable
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-white">
-                    Mise à jour illimitée des informations
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-white">Collecte des leads</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-white">
-                    Gestion d'équipe centralisée
-                  </span>
-                </li>
-              </ul>
-              <button className="w-full px-6 py-3 bg-white text-[#FF9500] rounded-full font-medium transition-all duration-200 hover:bg-white/90 hover:shadow-md active:transform active:scale-[0.98]">
-                Choisir ce plan
-              </button>
             </div>
 
-            {/* Premium Plan */}
-            <div className="agno-card bg-white p-6 sm:p-8 hover-lift">
-              <h3 className="text-xl font-bold mb-2 text-contrast">Premium</h3>
-              <p className="text-muted text-sm mb-6">
-                Découvrez de nouveaux superpouvoirs
-              </p>
-              <div className="text-3xl font-bold mb-8 text-contrast">
-                7500 Fcfa
+            {/* Plan Premium - Caractéristiques avancées */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+              <div className="flex flex-col h-full">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900">
+                    Premium
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    Solution complète pour entreprises
+                  </p>
+                  <div className="text-3xl font-bold mb-6 text-gray-900">
+                    10000 <span className="text-lg">FCFA</span>
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Cartes connectées illimitées</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Profil digital premium</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Technologie NFC avancée</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Support dédié 24/7</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>Analytics avancés</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>CRM intégré</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-green-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span>API & intégrations</span>
+                    </li>
+                  </ul>
+                </div>
+                <Link
+                  href="/sign-in?redirect=/dashboard/create-card"
+                  className="block w-full px-6 py-3 text-center bg-[#FF9500] text-white rounded-full font-medium hover:bg-[#FF9500]/90 transition-colors"
+                >
+                  Commencer
+                </Link>
               </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">Carte de visite connectée</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">
-                    Profil digital personnalisable
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">
-                    Mise à jour illimitée des informations
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">Collecte des leads</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                    <svg
-                      className="w-4 h-4 text-orange-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-muted">
-                    Gestion d'équipe centralisée
-                  </span>
-                </li>
-              </ul>
-              <button className="w-full px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]">
-                Choisir ce plan
-              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Special Offers Section */}
-      <section className="px-4 sm:px-6 lg:px-8 mt-16 mb-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-[#FFE4E4] rounded-2xl p-8 relative overflow-hidden shadow-sm">
-            <div className="absolute top-4 right-4">
-              <svg
-                className="w-12 h-12 text-[#e7302a]"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M3.38 8A9.502 9.502 0 0112 2.5a9.502 9.502 0 019.215 7.182.75.75 0 101.456-.364C21.473 4.539 17.15 1 12 1a10.995 10.995 0 00-9.5 5.452V4.75a.75.75 0 00-1.5 0V8.5a1 1 0 001 1h3.75a.75.75 0 000-1.5H3.38zm-.595 6.318a.75.75 0 00-1.455.364C2.527 19.461 6.85 23 12 23c4.052 0 7.592-2.191 9.5-5.451v1.701a.75.75 0 001.5 0V15.5a1 1 0 00-1-1h-3.75a.75.75 0 000 1.5h2.37A9.502 9.502 0 0112 21.5c-4.446 0-8.181-3.055-9.215-7.182z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-[#e7302a] mb-4">
-              Offres spéciales
-            </h3>
-            <p className="text-gray-800 text-lg max-w-3xl">
-              Inscrivez-vous maintenant et{" "}
-              <span className="bg-[#e7302a] text-white px-2 py-1 rounded-md">
-                bénéficiez de 20% de réduction
-              </span>{" "}
-              sur votre premier mois avec le code promo AGNO20.
-            </p>
-            <Link
-              href="/sign-up"
-              className="inline-block mt-6 text-[#e7302a] font-medium hover:text-[#cc0000]"
-            >
-              Obtenir la réduction
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Explore Range Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Section Cartes Physiques - Nouveau design */}
+      <section className="w-full bg-white py-16">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Explorez la gamme
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              Nos Cartes Physiques
             </h2>
-            <p className="text-gray-600">
-              Découvrez nos différents modèles de cartes de visite connectées
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Des cartes de visite NFC premium, conçues pour faire une
+              impression durable
             </p>
           </div>
 
-          {/* Main Card */}
-          <div className="bg-gray-100 rounded-2xl p-8 mb-12">
-            <div className="flex flex-col md:flex-row gap-8 items-center">
-              <div className="flex-1">
-                <img
-                  src="/card1.png"
-                  alt="Carte de visite en PVC blanc"
-                  className="w-full max-w-[300px]"
-                />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-4">
-                  Carte de visite en PVC blanc
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Élégante et professionnelle, notre carte en PVC blanc offre
-                  une finition premium.
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold mb-1">Dimensions :</p>
-                    <p className="text-gray-600">85,5x54 mm</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">Poids :</p>
-                    <p className="text-gray-600">5g</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">Épaisseur :</p>
-                    <p className="text-gray-600">0,72 mm</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">Technologie :</p>
-                    <p className="text-gray-600">NFC et QR code</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">Compatibilité :</p>
-                    <p className="text-gray-600">iOS & Android</p>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {/* Carte Premium */}
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8">
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="relative w-full md:w-1/2 aspect-[1.586] rounded-lg overflow-hidden">
+                  <Image
+                    src="/card1.png"
+                    alt="Carte Premium"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Small Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Black Card */}
-            <div className="bg-gray-100 rounded-2xl p-8">
-              <div className="flex flex-col gap-6">
-                <img
-                  src="/card1.png"
-                  alt="Carte de visite en PVC noir"
-                  className="w-full max-w-[200px] mx-auto"
-                />
-                <div>
-                  <h3 className="text-xl font-bold mb-2">
-                    Carte de visite en PVC noir
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                    Carte Premium
                   </h3>
-                  <p className="text-gray-600 mb-4">
-                    Design élégant et moderne pour un impact maximal
+                  <p className="text-gray-600 mb-6">
+                    Design minimaliste en PVC blanc premium avec finition mate
                   </p>
-                  <div className="space-y-2 mb-6">
-                    <p>
-                      <span className="font-semibold">Dimensions :</span>{" "}
-                      85,5x54 mm
-                    </p>
-                    <p>
-                      <span className="font-semibold">Poids :</span> 5g
-                    </p>
-                    <p>
-                      <span className="font-semibold">Épaisseur :</span> 0,72 mm
-                    </p>
-                    <p>
-                      <span className="font-semibold">Technologie :</span> NFC
-                      et QR code
-                    </p>
-                    <p>
-                      <span className="font-semibold">Compatibilité :</span> iOS
-                      & Android
-                    </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-center text-gray-700">
+                      <span className="font-medium mr-2">•</span>
+                      NFC haute performance
+                    </li>
+                    <li className="flex items-center text-gray-700">
+                      <span className="font-medium mr-2">•</span>
+                      QR code discret
+                    </li>
+                    <li className="flex items-center text-gray-700">
+                      <span className="font-medium mr-2">•</span>
+                      Résistant à l'eau
+                    </li>
+                  </ul>
+                  <div className="text-2xl font-bold text-gray-900 mb-4">
+                    5000 FCFA
                   </div>
-                  <div className="text-xl font-bold mb-4">5000 Fcfa</div>
-                  <p className="text-sm text-gray-600 mb-4">
-                    Tarif dégressif selon quantité
-                  </p>
                   <Link
-                    href="/commander"
-                    className="inline-block px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]"
+                    href="/sign-in?redirect=/dashboard/create-card"
+                    className="inline-block px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium hover:bg-[#FF9500]/90 transition-colors"
                   >
-                    Acheter
+                    Commander
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Orange Card */}
-            <div className="bg-gray-100 rounded-2xl p-8">
-              <div className="flex flex-col gap-6">
-                <img
-                  src="/card2.png"
-                  alt="Carte de visite en PVC orange"
-                  className="w-full max-w-[200px] mx-auto"
-                />
-                <div>
-                  <h3 className="text-xl font-bold mb-2">
-                    Carte de visite en PVC orange
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Une touche de couleur pour se démarquer
+            {/* Carte Business */}
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 text-white">
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="relative w-full md:w-1/2 aspect-[1.586] rounded-lg overflow-hidden">
+                  <Image
+                    src="/card2.png"
+                    alt="Carte Business"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-4">Carte Business</h3>
+                  <p className="text-gray-300 mb-6">
+                    Design professionnel en PVC noir avec finition brillante
                   </p>
-                  <div className="space-y-2 mb-6">
-                    <p>
-                      <span className="font-semibold">Dimensions :</span>{" "}
-                      85,5x54 mm
-                    </p>
-                    <p>
-                      <span className="font-semibold">Poids :</span> 5g
-                    </p>
-                    <p>
-                      <span className="font-semibold">Épaisseur :</span> 0,72 mm
-                    </p>
-                    <p>
-                      <span className="font-semibold">Technologie :</span> NFC
-                      et QR code
-                    </p>
-                    <p>
-                      <span className="font-semibold">Compatibilité :</span> iOS
-                      & Android
-                    </p>
-                  </div>
-                  <div className="text-xl font-bold mb-4">5000 Fcfa</div>
-                  <p className="text-sm text-gray-600 mb-4">
-                    Tarif dégressif selon quantité
-                  </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-center text-gray-300">
+                      <span className="font-medium mr-2">•</span>
+                      Double puce NFC
+                    </li>
+                    <li className="flex items-center text-gray-300">
+                      <span className="font-medium mr-2">•</span>
+                      QR code personnalisé
+                    </li>
+                    <li className="flex items-center text-gray-300">
+                      <span className="font-medium mr-2">•</span>
+                      Anti-rayures
+                    </li>
+                  </ul>
+                  <div className="text-2xl font-bold mb-4">7500 FCFA</div>
                   <Link
-                    href="/commander"
-                    className="inline-block px-6 py-3 bg-[#FF9500] text-white rounded-full font-medium transition-all duration-200 hover:bg-[#FF9500]/90 hover:shadow-md active:transform active:scale-[0.98]"
+                    href="/sign-in?redirect=/dashboard/create-card"
+                    className="inline-block px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition-colors"
                   >
-                    Acheter
+                    Commander
                   </Link>
                 </div>
               </div>
@@ -575,25 +519,26 @@ export default function TarifsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-agno py-16 text-white">
-        <div className="agno-container text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      {/* CTA Section - Optimisé */}
+      <section className="w-full bg-gradient-to-r from-[#e7302a] to-[#f7931e] py-16">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Prêt à transformer votre networking?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Commencez gratuitement dès aujourd'hui, sans engagement.
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
+            Commencez gratuitement dès aujourd'hui et découvrez la puissance des
+            cartes connectées.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="/sign-up"
-              className="bg-white text-agno agno-button hover:bg-gray-100 hover:text-agno-dark transition-colors"
+              className="px-8 py-4 bg-white text-[#e7302a] rounded-full font-medium hover:bg-gray-100 transition-colors"
             >
               Créer un compte
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-white text-white agno-button hover:bg-white/20 transition-colors"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-colors"
             >
               Nous contacter
             </Link>
