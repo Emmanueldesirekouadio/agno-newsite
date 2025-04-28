@@ -1,12 +1,20 @@
-import prisma from "@/lib/prisma";
+import { db } from "@/lib/firebase";
 import { CardData } from "@/types/card";
-import { currentUser } from "@clerk/nextjs";
-import { NextResponse } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const user = await currentUser();
-    if (!user) {
+    const { userId } = getAuth(req);
+    if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -20,20 +28,21 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create card in database
-    const card = await prisma.card.create({
-      data: {
-        name: data.name,
-        email: data.email,
-        title: data.title || "",
-        company: data.company || "",
-        phone: data.phone || "",
-        website: data.website || "",
-        theme: JSON.stringify(data.theme),
-        templateId: data.templateId || "default",
-        userId: user.id,
-      },
-    });
+    const cardData = {
+      name: data.name,
+      email: data.email,
+      title: data.title || "",
+      company: data.company || "",
+      phone: data.phone || "",
+      website: data.website || "",
+      theme: JSON.stringify(data.theme),
+      templateId: data.templateId || "default",
+      userId: userId,
+      createdAt: new Date().toISOString(),
+    };
+
+    const docRef = await addDoc(collection(db, "cards"), cardData);
+    const card = { id: docRef.id, ...cardData };
 
     return NextResponse.json(card);
   } catch (error) {
@@ -45,21 +54,24 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
-    const user = await currentUser();
-    if (!user) {
+    const { userId } = getAuth(req);
+    if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const cards = await prisma.card.findMany({
-      where: {
-        userId: user.id,
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    const cardsQuery = query(
+      collection(db, "cards"),
+      where("userId", "==", userId),
+      orderBy("createdAt", "desc")
+    );
+
+    const querySnapshot = await getDocs(cardsQuery);
+    const cards = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
     return NextResponse.json(cards);
   } catch (error) {
