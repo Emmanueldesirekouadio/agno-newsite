@@ -1,5 +1,6 @@
-import { db } from "@/lib/db";
+import { db } from "@/lib/firebase";
 import { currentUser } from "@clerk/nextjs";
+import { doc, getDoc, collection, addDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -21,12 +22,12 @@ export async function POST(req: Request) {
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
-    const card = await db.card.findUnique({
-      where: {
-        id: cardId,
-        userId: user.id,
-      },
-    });
+    const cardRef = doc(db, "cards", cardId);
+    const cardSnap = await getDoc(cardRef);
+    const card =
+      cardSnap.exists() && cardSnap.data().userId === user.id
+        ? cardSnap.data()
+        : null;
 
     if (!card) {
       return new NextResponse("Card not found", { status: 404 });

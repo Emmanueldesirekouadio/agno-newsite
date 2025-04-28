@@ -1,5 +1,6 @@
-import { db } from "@/lib/db";
+import { db } from "@/lib/firebase";
 import { currentUser } from "@clerk/nextjs";
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -16,28 +17,28 @@ export async function POST(req: Request) {
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
-    const card = await db.card.findUnique({
-      where: {
-        id: cardId,
-        userId: user.id,
-      },
-    });
+    const cardRef = doc(db, "cards", cardId);
+    const cardSnap = await getDoc(cardRef);
+    const card =
+      cardSnap.exists() && cardSnap.data().userId === user.id
+        ? cardSnap.data()
+        : null;
 
     if (!card) {
       return new NextResponse("Card not found", { status: 404 });
     }
 
     // Créer un paiement dans la base de données
-    const payment = await db.payment.create({
-      data: {
-        cardId,
-        userId: user.id,
-        amount,
-        currency,
-        status: "pending",
-        provider: "orange_money",
-      },
-    });
+    const paymentData = {
+      cardId,
+      userId: user.id,
+      amount,
+      currency,
+      status: "pending",
+      provider: "orange_money",
+    };
+    const paymentRef = await addDoc(collection(db, "payments"), paymentData);
+    const payment = { id: paymentRef.id, ...paymentData };
 
     // Simuler l'intégration avec l'API Orange Money
     // Dans un environnement de production, vous utiliseriez l'API réelle d'Orange Money
