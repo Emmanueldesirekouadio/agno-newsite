@@ -412,51 +412,39 @@ export default function Home() {
 
               <div className="flex flex-col md:w-1/2 md:pl-6 sm:md:pl-8 w-full relative">
                 {/* Cards with zigzag layout */}
-                <div className="relative space-y-3 sm:space-y-4 md:space-y-6">
-                  {/* First card - shifted slightly right */}
-                  <div className="card ml-auto mr-2 sm:mr-4 md:w-[90%]">
-                    <div className="mr-3 sm:mr-4 md:mr-6 text-orange-500">
-                      <QrCode size={28} strokeWidth={1.5} />
+                <div className="relative space-y-6">
+                  {/* 1. Scans */}
+                  <div className="flex items-center bg-white rounded-2xl shadow p-6 min-w-[340px] max-w-full">
+                    <div className="text-orange-500 flex-shrink-0 mr-4">
+                      <QrCode size={32} strokeWidth={1.5} />
                     </div>
                     <div>
-                      <p className="font-bold text-sm sm:text-base md:text-lg">
-                        500 scans
-                      </p>
-                      <p className="text-gray-500 text-xs sm:text-sm md:text-base">
-                        Ce mois-ci
-                      </p>
+                      <div className="font-bold text-xl">500 scans</div>
+                      <div className="text-gray-500 text-base">Ce mois-ci</div>
                     </div>
                   </div>
-
-                  {/* Second card - shifted left */}
-                  <div className="card ml-2 md:w-[95%]">
-                    <div className="mr-3 sm:mr-4 md:mr-6 text-black">
-                      <FileText size={18} />
+                  {/* 2. Cartes créées */}
+                  <div className="flex items-center bg-white rounded-2xl shadow p-6 min-w-[340px] max-w-full">
+                    <div className="text-black flex-shrink-0 mr-4">
+                      <FileText size={28} />
                     </div>
-                    <div className="flex-1">
-                      <p className="font-bold text-sm sm:text-base md:text-lg">
-                        Cartes créées
-                      </p>
+                    <div className="font-bold text-xl flex-1">
+                      Cartes créées
                     </div>
-                    <div className="ml-auto">
-                      <span className="font-bold text-sm sm:text-base md:text-lg text-orange-500">
-                        81
-                      </span>
+                    <div className="font-bold text-xl text-orange-500 ml-4">
+                      81
                     </div>
                   </div>
-
-                  {/* Third card - shifted right again */}
-                  <div className="card ml-auto mr-3 sm:mr-4 md:mr-10 md:w-[85%]">
-                    <div className="mr-3 sm:mr-4 md:mr-6 text-blue-500">
-                      <GraduationCap size={18} />
+                  {/* 3. Résumé du compte */}
+                  <div className="flex items-center bg-white rounded-2xl shadow p-6 min-w-[340px] max-w-full">
+                    <div className="text-blue-500 flex-shrink-0 mr-4">
+                      <GraduationCap size={28} />
                     </div>
                     <div>
-                      <p className="font-bold text-sm sm:text-base md:text-lg">
-                        Résumé du compte
-                      </p>
-                      <p className="text-gray-500 text-xs sm:text-sm md:text-base">
+                      <div className="font-bold text-xl">Résumé du compte</div>
+                      <div className="text-gray-500 text-base">
                         Progression du réseau +45% ce trimestre
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
