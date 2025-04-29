@@ -117,7 +117,7 @@ export default function Footer() {
                 />
               </Link>
               <Link
-                href="#"
+                href="https://www.tiktok.com/@agnesmere_communication"
                 className="hover-lift bg-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
               >
                 <Image
