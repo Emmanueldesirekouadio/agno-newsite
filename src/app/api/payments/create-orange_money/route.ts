@@ -1,6 +1,6 @@
 import { db } from "@/lib/firebase";
 import { auth } from "@clerk/nextjs/server";
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -29,22 +29,26 @@ export async function POST(req: Request) {
     }
 
     // Créer un paiement dans la base de données
-    const paymentData = {
-      cardId,
-      userId,
-      amount,
-      currency,
-      status: "pending",
-      provider: "orange_money",
-    };
-    const paymentRef = await addDoc(collection(db, "payments"), paymentData);
-    const payment = { id: paymentRef.id, ...paymentData };
+    // const paymentData = {
+    //   cardId,
+    //   userId,
+    //   amount,
+    //   currency,
+    //   status: "pending",
+    //   provider: "orange_money",
+    // };
+    // const paymentRef = await addDoc(collection(db, "payments"), paymentData);
+    // const payment = { id: paymentRef.id, ...paymentData };
 
     // Simuler l'intégration avec l'API Orange Money
     // Dans un environnement de production, vous utiliseriez l'API réelle d'Orange Money
-    const paymentUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/payments/orange-money/checkout?paymentId=${payment.id}`;
+    // const paymentUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/payments/orange-money/checkout?paymentId=${payment.id}`;
 
-    return NextResponse.json({ paymentUrl });
+    // return NextResponse.json({ paymentUrl });
+    return NextResponse.json(
+      { error: "Orange Money integration is disabled (no key present)" },
+      { status: 501 }
+    );
   } catch (error) {
     console.error("[PAYMENT_ORANGE_MONEY_POST]", error);
     return new NextResponse("Internal Error", { status: 500 });

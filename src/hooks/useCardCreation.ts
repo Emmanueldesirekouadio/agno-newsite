@@ -135,10 +135,11 @@ export const useCardCreation = () => {
         window.location.href = data.paymentUrl;
       } else if (data.sessionId) {
         // Pour Stripe
-        const stripe = await import("@stripe/stripe-js").then((m) =>
-          m.loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!)
-        );
-        await stripe?.redirectToCheckout({ sessionId: data.sessionId });
+        // const stripe = await import("@stripe/stripe-js").then((m) =>
+        //   m.loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!)
+        // );
+        // await stripe?.redirectToCheckout({ sessionId: data.sessionId });
+        setError("Stripe payments are currently disabled");
       } else {
         throw new Error("Réponse de paiement invalide");
       }

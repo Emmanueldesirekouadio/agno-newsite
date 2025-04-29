@@ -1,8 +1,8 @@
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
 
 interface PaymentOptions {
   amount: number;
@@ -26,32 +26,35 @@ export const usePayment = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch("/api/payments/create-checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount,
-          currency,
-          planType,
-          cardId,
-        }),
-      });
+      // const response = await fetch("/api/payments/create-checkout", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     amount,
+      //     currency,
+      //     planType,
+      //     cardId,
+      //   }),
+      // });
 
-      const { sessionId } = await response.json();
-      const stripe = await stripePromise;
+      // const { sessionId } = await response.json();
+      // const stripe = await stripePromise;
 
-      if (!stripe) {
-        throw new Error("Stripe not initialized");
-      }
+      // if (!stripe) {
+      //   throw new Error("Stripe not initialized");
+      // }
 
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) {
-        throw error;
-      }
+      // const { error } = await stripe.redirectToCheckout({ sessionId });
+      // if (error) {
+      //   throw new Error(error.message);
+      // }
+
+      // Temporary response since Stripe is disabled
+      setError("Stripe payments are currently disabled");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Une erreur est survenue");
+      setError(err instanceof Error ? err.message : "Payment failed");
     } finally {
       setLoading(false);
     }
