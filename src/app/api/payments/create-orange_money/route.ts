@@ -1,12 +1,12 @@
 import { db } from "@/lib/firebase";
-import { currentUser } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const user = await currentUser();
-    if (!user) {
+    const { userId } = await auth();
+    if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     const cardRef = doc(db, "cards", cardId);
     const cardSnap = await getDoc(cardRef);
     const card =
-      cardSnap.exists() && cardSnap.data().userId === user.id
+      cardSnap.exists() && cardSnap.data().userId === userId
         ? cardSnap.data()
         : null;
 
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     // Créer un paiement dans la base de données
     const paymentData = {
       cardId,
-      userId: user.id,
+      userId,
       amount,
       currency,
       status: "pending",
