@@ -41,15 +41,15 @@ export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#FF9500] to-[#FF5F00] min-h-screen overflow-hidden">
-        <div className="container mx-auto px-4 py-20 flex items-center relative z-10">
+      <section className="relative bg-gradient-to-br from-[#FF9500] to-[#FF5F00] min-h-screen overflow-hidden flex items-center">
+        <div className="container mx-auto px-4 py-12 lg:py-0 flex items-center relative z-10">
           <div className="w-full lg:w-1/2 text-white">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold mb-6">
               Transformez votre{" "}
-              <span className="relative">
+              <span className="relative inline-block">
                 Networking
                 <motion.span
-                  className="absolute -right-6 top-[3.8rem] lg:top-[4.8rem] lg:-right-8 bg-red-500 px-2 py-1 rounded-lg text-white text-4xl"
+                  className="absolute -right-6 top-[3.8rem] lg:top-[5.5rem] xl:top-[7rem] lg:-right-8 bg-red-500 px-2 py-1 rounded-lg text-white text-4xl lg:text-5xl"
                   animate={{ rotate: [-4.5, 4.5] }}
                   transition={{
                     repeat: Infinity,
@@ -67,9 +67,9 @@ export default function Home() {
                 Agno
               </span>
             </h1>
-            <p className="text-xl mb-8 opacity-90">
-              Transformez votre Networking avec AgnoTransformez votre Networking
-              avec Agno
+            <p className="text-xl lg:text-2xl mb-8 opacity-90 max-w-2xl">
+              Créez et partagez vos cartes de visite numériques en quelques
+              clics. Simple, professionnel et efficace.
             </p>
             <div className="flex flex-wrap gap-4">
               <SignedIn>
@@ -153,13 +153,13 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-20 w-[600px]">
+          <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-20 w-[600px] xl:w-[800px] 2xl:w-[1000px]">
             <div className="relative">
               {/* Phone Frame */}
               <div className="absolute inset-0 bg-[#1E1E1E] rounded-[60px] transform rotate-12 scale-90 translate-x-10 translate-y-10 shadow-2xl"></div>
               {/* Phone Screen */}
               <div className="relative bg-white rounded-[50px] overflow-hidden shadow-xl transform rotate-12">
-                <div className="w-[380px]">
+                <div className="w-[380px] xl:w-[480px] 2xl:w-[580px]">
                   {/* Status Bar */}
                   <div className="bg-white px-6 py-2 flex justify-between items-center">
                     <span className="text-black text-sm">9:41</span>
@@ -208,8 +208,10 @@ export default function Home() {
                             alt="Kouamé Serge"
                             fill
                             className="object-cover"
-                            sizes="64px"
+                            sizes="(max-width: 768px) 64px, (max-width: 1200px) 96px, 128px"
                             priority
+                            loading="eager"
+                            quality={90}
                           />
                         </div>
                         <div>
