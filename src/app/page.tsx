@@ -320,7 +320,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pourquoi Choisir Agno Section */}
+      {/* Pourquoi Choisir Agno Section  */}
       <section className="bg-white py-12 sm:py-16 md:py-20">
         <div className="agno-container">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12">
@@ -363,7 +363,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* card  */}
+      {/* card  Section */}
 
       <div className="min-h-screen">
         <div className="orange-gradient-bg rounded-[1.5rem] sm:rounded-[2rem] mx-3 sm:mx-4 my-6 sm:my-8 overflow-hidden">
