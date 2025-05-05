@@ -155,13 +155,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="hidden lg:block absolute right-[-5%] xl:right-[-2%] 2xl:right-0 top-1/2 transform -translate-y-1/2 w-[500px] xl:w-[600px] 2xl:w-[700px]">
+          <div className="hidden lg:block absolute right-[-5%] xl:right-[-2%] 2xl:right-0 top-1/2 transform -translate-y-1/2 w-[550px] xl:w-[650px] 2xl:w-[750px]">
             <div className="relative">
               {/* Phone Frame */}
-              <div className="absolute inset-0 bg-[#1E1E1E] rounded-[60px] transform rotate-12 scale-[0.8] translate-x-8 translate-y-8 shadow-2xl"></div>
+              <div className="absolute inset-0 bg-[#1E1E1E] rounded-[60px] transform rotate-12 scale-[0.85] translate-x-8 translate-y-8 shadow-2xl"></div>
               {/* Phone Screen */}
               <div className="relative bg-white rounded-[50px] overflow-hidden shadow-xl transform rotate-12">
-                <div className="w-[340px] xl:w-[380px] 2xl:w-[420px]">
+                <div className="w-[360px] xl:w-[400px] 2xl:w-[440px]">
                   {/* Status Bar */}
                   <div className="bg-white px-6 py-2 flex justify-between items-center">
                     <span className="text-black text-sm">9:41</span>
@@ -364,20 +364,19 @@ export default function Home() {
       </section>
 
       {/* card  Section */}
-
-      <div className="min-h-screen">
-        <div className="orange-gradient-bg rounded-[1.5rem] sm:rounded-[2rem] mx-3 sm:mx-4 my-6 sm:my-8 overflow-hidden">
+      <div className="py-12 lg:py-16 xl:py-20">
+        <div className="orange-gradient-bg rounded-[1.5rem] sm:rounded-[2rem] mx-3 sm:mx-4 overflow-hidden">
           <div className="diagonal-lines" />
-          <div className="content py-6 sm:py-8 md:py-12 px-3 sm:px-4 md:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-start max-w-6xl mx-auto">
+          <div className="content py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8">
+            <div className="flex flex-col md:flex-row justify-between items-start max-w-6xl mx-auto gap-8 lg:gap-12">
               <div className="text-white mb-6 sm:mb-8 md:mb-0 md:w-1/2">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
                   Gérez vos cartes facilement :
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 md:mb-6">
+                </h2>
+                <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8">
                   Connectez-vous à votre espace client pour :
                 </p>
-                <ul className="space-y-2 sm:space-y-3">
+                <ul className="space-y-3 sm:space-y-4">
                   <li className="flex items-start">
                     <span className="mr-2 text-base sm:text-lg md:text-xl">
                       •
@@ -414,9 +413,9 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div className="flex flex-col md:w-1/2 md:pl-6 sm:md:pl-8 w-full relative">
+              <div className="flex flex-col md:w-1/2 md:pl-6 lg:pl-8 w-full">
                 {/* Cards with zigzag layout */}
-                <div className="relative space-y-6">
+                <div className="relative space-y-4 sm:space-y-6">
                   {/* 1. Scans */}
                   <div className="flex items-center bg-white rounded-2xl shadow p-6 min-w-[340px] max-w-full">
                     <div className="text-orange-500 flex-shrink-0 mr-4">
