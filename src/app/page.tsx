@@ -42,62 +42,42 @@ export default function Home() {
     <main>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#FF9500] to-[#FF5F00] min-h-screen overflow-hidden flex items-center">
-        <div className="container mx-auto px-4 py-12 lg:py-0 flex items-center relative z-10">
-          <div className="w-full lg:w-1/2 text-white">
-            <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold mb-6">
-              Transformez votre{" "}
-              <span className="relative inline-block">
-                Networking
-                <motion.span
-                  className="absolute -right-6 top-[3.8rem] lg:top-[5.5rem] xl:top-[7rem] lg:-right-8 bg-red-500 px-2 py-1 rounded-lg text-white text-4xl lg:text-5xl"
-                  animate={{ rotate: [-4.5, 4.5] }}
-                  transition={{
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    duration: 2.5,
-                    ease: "easeInOut",
-                  }}
-                  style={{ transformOrigin: "50% 0%" }}
-                >
-                  avec
-                </motion.span>
-              </span>
-              <br />
-              <span className="inline-block mt-2 bg-red-500 px-4 py-2 rounded-lg transform -rotate-2">
-                Agno
-              </span>
-            </h1>
-            <p className="text-xl lg:text-2xl mb-8 opacity-90 max-w-2xl">
-              Créez et partagez vos cartes de visite numériques en quelques
-              clics. Simple, professionnel et efficace.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <SignedIn>
-                <Link
-                  href="/dashboard/create-card"
-                  className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2"
-                >
-                  Commencer
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    className="transform translate-x-1"
+        <div className="container mx-auto px-4 py-12 lg:py-20 xl:py-24 2xl:py-32 flex items-center justify-between relative z-10">
+          <div className="w-full lg:w-1/2 text-white lg:pr-8">
+            <div className="max-w-2xl">
+              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold mb-8">
+                Transformez votre{" "}
+                <span className="relative inline-block">
+                  Networking
+                  <motion.span
+                    className="absolute -right-6 top-[3.8rem] lg:top-[4.5rem] xl:top-[5.2rem] lg:-right-8 bg-red-500 px-2 py-1 rounded-lg text-white text-4xl lg:text-5xl"
+                    animate={{ rotate: [-4.5, 4.5] }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      duration: 2.5,
+                      ease: "easeInOut",
+                    }}
+                    style={{ transformOrigin: "50% 0%" }}
                   >
-                    <path
-                      d="M5 12H19M19 12L12 5M19 12L12 19"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              </SignedIn>
-              <SignedOut>
-                <SignInButton mode="modal">
-                  <button className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2">
+                    avec
+                  </motion.span>
+                </span>
+                <br />
+                <span className="inline-block mt-4 bg-red-500 px-4 py-2 rounded-lg transform -rotate-2">
+                  Agno
+                </span>
+              </h1>
+              <p className="text-xl lg:text-2xl mb-12 opacity-90">
+                Créez et partagez vos cartes de visite numériques en quelques
+                clics. Simple, professionnel et efficace.
+              </p>
+              <div className="flex flex-wrap gap-6">
+                <SignedIn>
+                  <Link
+                    href="/dashboard/create-card"
+                    className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2"
+                  >
                     Commencer
                     <svg
                       width="20"
@@ -114,52 +94,74 @@ export default function Home() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </button>
-                </SignInButton>
-              </SignedOut>
-              <Link
-                href="https://play.google.com/store/apps/details?id=com.agnoapp&hl=fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white border-2 border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:bg-opacity-10 transition-all flex items-center gap-2"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
+                  </Link>
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button className="bg-white text-[#FF9500] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all flex items-center gap-2">
+                      Commencer
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        className="transform translate-x-1"
+                      >
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+                <Link
+                  href="https://play.google.com/store/apps/details?id=com.agnoapp&hl=fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white border-2 border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:bg-opacity-10 transition-all flex items-center gap-2"
                 >
-                  <path
-                    d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M7 10L12 15L17 10"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 15V3"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Télécharger l&apos;application
-              </Link>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M7 10L12 15L17 10"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M12 15V3"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Télécharger l&apos;application
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-20 w-[600px] xl:w-[800px] 2xl:w-[1000px]">
+          <div className="hidden lg:block absolute right-[-5%] xl:right-[-2%] 2xl:right-0 top-1/2 transform -translate-y-1/2 w-[500px] xl:w-[600px] 2xl:w-[700px]">
             <div className="relative">
               {/* Phone Frame */}
-              <div className="absolute inset-0 bg-[#1E1E1E] rounded-[60px] transform rotate-12 scale-90 translate-x-10 translate-y-10 shadow-2xl"></div>
+              <div className="absolute inset-0 bg-[#1E1E1E] rounded-[60px] transform rotate-12 scale-[0.8] translate-x-8 translate-y-8 shadow-2xl"></div>
               {/* Phone Screen */}
               <div className="relative bg-white rounded-[50px] overflow-hidden shadow-xl transform rotate-12">
-                <div className="w-[380px] xl:w-[480px] 2xl:w-[580px]">
+                <div className="w-[340px] xl:w-[380px] 2xl:w-[420px]">
                   {/* Status Bar */}
                   <div className="bg-white px-6 py-2 flex justify-between items-center">
                     <span className="text-black text-sm">9:41</span>
